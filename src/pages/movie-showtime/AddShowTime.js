@@ -24,6 +24,7 @@ import { addShowTIme, ctg } from '../../initializers';
 import DatePicker from 'react-date-picker';
 import { getMovieTicket } from '../../redux/actions/movies';
 import { getCinemas } from '../../redux/actions/cinemas';
+import { newShowTime } from '../../redux/actions/showtime';
 
 class AddShowTime extends Component {
   constructor(props) {
@@ -112,6 +113,7 @@ class AddShowTime extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    const { newShowTime, history } = this.props;
     const stateObjectCopy = {
       ...this.state,
       sold: 2,
@@ -149,8 +151,7 @@ class AddShowTime extends Component {
     });
 
     stateObjectCopy['classes'] = newTicketTypeArray;
-
-    console.log(stateObjectCopy, 'STATEOBJECT_COPY');
+    newShowTime(stateObjectCopy, history);
   };
 
   render() {
@@ -378,5 +379,5 @@ const map_state_to_props = state => ({
 });
 export default connect(
   map_state_to_props,
-  { getMovieTicket, getCinemas },
+  { getMovieTicket, getCinemas, newShowTime },
 )(AddShowTime);

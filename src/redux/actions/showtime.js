@@ -51,7 +51,7 @@ export const getShowTime = id => async dispatch => {
     );
 };
 
-export const addShowTime = (data, history) => async dispatch => {
+export const newShowTime = (data, history) => async dispatch => {
   axios
     .post(`${MOVIE_DASHBOARD_API_LOCAL}/tickets/available/new`, data)
     .then(result => {
