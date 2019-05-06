@@ -7,6 +7,7 @@ import redeemption from './redeemptions';
 import transactions from './transactions';
 import cinemas from './cinema';
 import errors from './errors';
+import showtimes from './showtime';
 
 export default combineReducers({
   errors,
@@ -17,4 +18,5 @@ export default combineReducers({
   transactions,
   voucher,
   cinemas,
+  showtimes,
 });
