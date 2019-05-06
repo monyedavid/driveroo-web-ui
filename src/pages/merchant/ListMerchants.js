@@ -43,6 +43,7 @@ class ListMerchants extends Component {
                     <Table striped={true} id="listmerchantstable">
                       <thead>
                         <tr>
+                          <th>#</th>
                           <th>Name</th>
                           <th>Email</th>
                           <th>Phone</th>
