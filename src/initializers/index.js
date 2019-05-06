@@ -77,3 +77,24 @@ export const addShowTIme = {
   limit: '',
   available: 0,
 };
+
+const app = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const ctg = () => {
+  const randomNumber = app(1, 3);
+  if (randomNumber == 1) {
+    return 'adult';
+  }
+
+  if (randomNumber == 2) {
+    return 'children';
+  }
+
+  if (randomNumber == 3) {
+    return 'students';
+  }
+};
