@@ -18,8 +18,9 @@ class AuthForm extends React.Component {
     this.props.onChangeAuthState(authState);
   };
 
-  handleSubmit = event => {
+  handleSubmit = authState => event => {
     event.preventDefault();
+    this.props.onChangeAuthState(authState);
   };
 
   renderButtonText() {
@@ -87,7 +88,7 @@ class AuthForm extends React.Component {
           size="lg"
           className="bg-gradient-theme-left border-0"
           block
-          onClick={this.handleSubmit}>
+          onClick={this.handleSubmit(STATE_LOGIN)}>
           {this.renderButtonText()}
         </Button>
 

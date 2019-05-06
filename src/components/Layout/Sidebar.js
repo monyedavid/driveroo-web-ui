@@ -1,4 +1,4 @@
-import logo200Image from 'assets/img/logo/logo_200.png';
+import logo200Image from 'assets/img/logo/nairabox-icon.png';
 import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
@@ -54,21 +54,21 @@ const navMovies = [
 ];
 
 const navTransactions = [
-  { to: '/transaction-daily', name: 'Daily', exact: false, Icon: MdAccountCircle },
+  { to: '/daily-transactions', name: 'Daily', exact: false, Icon: MdAccountCircle },
   {
-    to: '/transaction-weekly',
+    to: '/weekly-transactions',
     name: 'Weekly',
     exact: false,
     Icon: MdViewCarousel,
   },
   {
-    to: '/transaction-monthly',
+    to: '/monthly-transactions',
     name: 'Monthly',
     exact: false,
     Icon: MdAccountCircle,
   },
   {
-    to: '/transaction-range',
+    to: '/range-transactions',
     name: 'Range',
     exact: false,
     Icon: MdAccountCircle,
@@ -106,13 +106,14 @@ const navVouchers = [
 ];
 
 const navMerchants = [
-  { to: '/create-movie', name: 'Create Movie', exact: false, Icon: MdAccountCircle },
+  { to: '/create-merchant', name: 'Create Merchant', exact: false, Icon: MdAccountCircle },
   {
-    to: '/list-movies',
-    name: 'list movies',
+    to: '/list-merchants',
+    name: 'List Merchants',
     exact: false,
     Icon: MdViewCarousel,
   },
+  { to: '/update-merchant', name: 'Update Merchant', exact: false, Icon: MdAccountCircle },
 ];
 
 const navImages = [
@@ -123,17 +124,6 @@ const navImages = [
     exact: false,
     Icon: MdViewCarousel,
   },
-];
-
-
-const navTickets = [
-  { to: '/create-ticket', name: 'Create Ticket', exact: false, Icon: MdRadioButtonChecked },
-  {
-    to: '/all-tickets',
-    name: 'All Tickets',
-    exact: false,
-    Icon: MdGroupWork,
-  }
 ];
 
 const navContents = [
@@ -169,7 +159,6 @@ class Sidebar extends React.Component {
     isOpenVouchers: false,
     isOpenMerchants: false,
     isOpenImages: false,
-    isOpenTickets: false,
     isOpenPages: false,
   };
 
@@ -198,7 +187,7 @@ class Sidebar extends React.Component {
                 alt=""
               />
               <span className="text-white">
-                Reduction <FaGithub />
+                Nairabox Movies
               </span>
             </SourceLink>
           </Navbar>
@@ -260,45 +249,6 @@ class Sidebar extends React.Component {
               ))}
             </Collapse>
 
-            <NavItem
-              className={bem.e('nav-item')}
-              onClick={this.handleClick('Components')}
-            >
-              <BSNavLink className={bem.e('nav-item-collapse')}>
-                <div className="d-flex">
-                  <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">Tickets</span>
-                </div>
-                <MdKeyboardArrowDown
-                  className={bem.e('nav-item-icon')}
-                  style={{
-                    padding: 0,
-                    transform: this.state.isOpenComponents
-                      ? 'rotate(0deg)'
-                      : 'rotate(-90deg)',
-                    transitionDuration: '0.3s',
-                    transitionProperty: 'transform',
-                  }}
-                />
-              </BSNavLink>
-            </NavItem>
-            <Collapse isOpen={this.state.isOpenComponents}>
-              {navTickets.map(({ to, name, exact, Icon }, index) => (
-                <NavItem key={index} className={bem.e('nav-item')}>
-                  <BSNavLink
-                    id={`navItem-${name}-${index}`}
-                    className="text-uppercase"
-                    tag={NavLink}
-                    to={to}
-                    activeClassName="active"
-                    exact={exact}
-                  >
-                    <Icon className={bem.e('nav-item-icon')} />
-                    <span className="">{name}</span>
-                  </BSNavLink>
-                </NavItem>
-              ))}
-            </Collapse>
 
             {/* TRANSACTIONS... */}
             <NavItem
@@ -530,47 +480,6 @@ class Sidebar extends React.Component {
             </NavItem>
             <Collapse isOpen={this.state.isOpenImages}>
               {navImages.map(({ to, name, exact, Icon }, index) => (
-                <NavItem key={index} className={bem.e('nav-item')}>
-                  <BSNavLink
-                    id={`navItem-${name}-${index}`}
-                    className="text-uppercase"
-                    tag={NavLink}
-                    to={to}
-                    activeClassName="active"
-                    exact={exact}
-                  >
-                    <Icon className={bem.e('nav-item-icon')} />
-                    <span className="">{name}</span>
-                  </BSNavLink>
-                </NavItem>
-              ))}
-            </Collapse>
-
-            {/* MANAGE TICKETS... */}
-            <NavItem
-              className={bem.e('nav-item')}
-              onClick={this.handleClick('Tickets')}
-            >
-              <BSNavLink className={bem.e('nav-item-collapse')}>
-                <div className="d-flex">
-                  <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">Manage Tickets</span>
-                </div>
-                <MdKeyboardArrowDown
-                  className={bem.e('nav-item-icon')}
-                  style={{
-                    padding: 0,
-                    transform: this.state.isOpenTickets
-                      ? 'rotate(0deg)'
-                      : 'rotate(-90deg)',
-                    transitionDuration: '0.3s',
-                    transitionProperty: 'transform',
-                  }}
-                />
-              </BSNavLink>
-            </NavItem>
-            <Collapse isOpen={this.state.isOpenTickets}>
-              {navTickets.map(({ to, name, exact, Icon }, index) => (
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}
