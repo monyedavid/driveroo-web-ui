@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Card, CardBody, CardHeader, Col, Table, Row } from 'reactstrap';
 import MerchantItem from '../../components/common/List/MerchantItem';
+// MODAL
+import DialogueTitle from '../../components/common/Modal/Title';
 import DemoModal from '../../components/common/Modal/index';
 import { getMerchants } from '../../redux/actions/merchant';
 
