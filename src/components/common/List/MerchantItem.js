@@ -9,6 +9,7 @@ export default class Merchant extends Component {
         ticketDetails: { _id, name, email, phone, location },
         index,
       } = this.props,
+      update = `/update-merchant/${_id}`,
       details = `/details/${_id}`;
     return (
       <React.Fragment>
@@ -23,7 +24,7 @@ export default class Merchant extends Component {
               <Link to={details}>Details</Link>
             </td>
             <td>
-              <Link to={details}>Edit+Delete</Link>
+              <Link to={update}>Edit</Link>
             </td>
           </tr>
         </tbody>

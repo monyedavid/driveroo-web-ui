@@ -18,14 +18,14 @@ import {
   Label,
   Row,
 } from 'reactstrap';
-import { createMerchantState } from '../../initializers';
+import { updateMerchantState } from '../../initializers';
 import { updateMerchant, getMerchant } from '../../redux/actions/merchant';
 
 class CreateMerchant extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...createMerchantState,
+      ...updateMerchantState,
     };
 
     this.onChange = this.onChange.bind(this);
@@ -37,42 +37,30 @@ class CreateMerchant extends Component {
     getMerchant(this.props.match.params._id);
   }
 
-  /**
-   * BankDetails: {accountNumber: "0165166229", accountName: "Merchant man  Wema", name: "wema"}
-bannerImage: "http://res.cloudinary.com/dnbvtgujy/image/upload/v1556034874/g9do9kf1djgt6oxa1qqe.jpg"
-email: "griffinc317@gmail.com"
-location: "East Coast West Coast"
-logo: "http://res.cloudinary.com/dnbvtgujy/image/upload/v1556034909/inakpject1zs19glghk7.jpg"
-name: "your friendly neighborhood merchant man"
-ngo: true
-ngoPhoneNumber: "2348132561527"
-phone: "2349072777130"
-summary: "some-rndom-summary"
-tagLine: "some-randm-tag-line"
-thankYouMessage: "everybody gets one."
-__v: 0
-_id: "5cbf355daa57550a9c7d2120"
-   */
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.merch.merchant === null && !nextProps.merch.loading) {
       this.props.history.push('/lost-bot'); // create page
     }
 
-    if (nextProps.merch.merchant !== null) {
-      const stateCopy = {
-        ...nextProps.merch.merchant,
-      };
-
-      delete stateCopy['BankDetails'];
+    const { merchant } = nextProps.merch;
+    if (merchant !== null) {
       this.setState({
-        ...stateCopy,
-        bank_name: nextProps.merch.merchant.BankDetails.accountName,
-        bank_account_number: nextProps.merch.merchant.BankDetails.accountNumber,
-        bank_account_name: nextProps.merch.merchant.BankDetails.name,
+        bannerImage: merchant.bannerImage, // file
+        name: merchant.name,
+        email: merchant.email,
+        phone: merchant.phone,
+        ngo: merchant.ngo,
+        ngoPhoneNumber: merchant.ngoPhoneNumber,
+        tagLine: merchant.tagLine,
+        logo: merchant.logo, // file
+        location: merchant.location,
+        bank_name: merchant.BankDetails.name,
+        bank_account_number: merchant.BankDetails.accountNumber,
+        bank_account_name: merchant.BankDetails.accountName,
+        summary: merchant.summary,
+        thankYouMessage: merchant.thankYouMessage,
+        website: merchant.website,
       });
-
-      console.log(this.state, 'STATE ACTUALL');
     }
   }
 
@@ -92,20 +80,60 @@ _id: "5cbf355daa57550a9c7d2120"
 
   onSubmit = async e => {
     e.preventDefault();
-    console.log(this.state);
+    const {
+      merch: { merchant },
+      updateMerchant,
+      history,
+    } = this.props;
+
+    const updatedItems = {
+      ...this.state,
+    };
+
+    const fd = new FormData();
+
+    Object.keys(updatedItems).forEach(key => {
+      if (
+        key === 'bank_account_name' ||
+        key === 'bank_account_number' ||
+        key == 'bank_name'
+      ) {
+        return;
+      }
+      if (updatedItems[key] === merchant[key]) {
+        delete updatedItems[key];
+      }
+    });
+
+    Object.keys(updatedItems).forEach(k => {
+      if (k === 'bannerImage') {
+        return fd.append(
+          'bannerImage',
+          this.state.bannerImage['0'],
+          this.state.bannerImage['0'].name,
+        );
+      }
+
+      if (k === 'logo') {
+        return fd.append('logo', this.state.logo[0], this.state.logo['0'].name);
+      }
+
+      fd.append(k, updatedItems[k]);
+    });
+
+    updateMerchant(merchant._id, fd, history);
   };
 
   render() {
-    const {} = this.props;
     return (
       <Page
-        title="New Merchant"
-        breadcrumbs={[{ name: 'New Merchant', active: true }]}
+        title="Update Merchant"
+        breadcrumbs={[{ name: 'Update Merchant', active: true }]}
       >
         <Row>
           <Col xl={12} lg={12} md={12}>
             <Card>
-              <CardHeader>Create a new Merchant</CardHeader>
+              <CardHeader>Update Merchant</CardHeader>
               <CardBody>
                 <Form>
                   {/* NAME */}
@@ -118,6 +146,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="name"
                         placeholder="merchant's name"
+                        value={this.state.name}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -133,6 +162,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="email"
                         placeholder="merchant's email"
+                        value={this.state.email}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -148,6 +178,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="phone"
                         placeholder="merchant's phone"
+                        value={this.state.phone}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -176,6 +207,7 @@ _id: "5cbf355daa57550a9c7d2120"
                             type="checkbox"
                             name="ngo"
                             id="isMerchantNGO"
+                            defaultChecked={this.state.ngo}
                             onClick={() => {
                               this.setState(previousState => ({
                                 ngo: !previousState.ngo,
@@ -204,19 +236,24 @@ _id: "5cbf355daa57550a9c7d2120"
                   </FormGroup>
 
                   {/* NGO PHONE NUMBER  */}
-                  <FormGroup row>
-                    <Label for="ngoPhoneNumber" sm={3}>
-                      NGO's Phone
-                    </Label>
-                    <Col sm={8}>
-                      <Input
-                        type="text"
-                        name="ngoPhoneNumber"
-                        placeholder="ngo-phone"
-                        onChange={this.onChange}
-                      />
-                    </Col>
-                  </FormGroup>
+                  {this.state.ngo ? (
+                    <FormGroup row>
+                      <Label for="ngoPhoneNumber" sm={3}>
+                        NGO's Phone
+                      </Label>
+                      <Col sm={8}>
+                        <Input
+                          type="text"
+                          name="ngoPhoneNumber"
+                          value={this.state.ngoPhoneNumber}
+                          placeholder="ngo-phone"
+                          onChange={this.onChange}
+                        />
+                      </Col>
+                    </FormGroup>
+                  ) : (
+                    <React.Fragment />
+                  )}
 
                   {/* TAGLINE */}
                   <FormGroup row>
@@ -227,6 +264,7 @@ _id: "5cbf355daa57550a9c7d2120"
                       <Input
                         type="text"
                         name="tagLine"
+                        value={this.state.tagLine}
                         placeholder="tagline"
                         onChange={this.onChange}
                       />
@@ -242,6 +280,7 @@ _id: "5cbf355daa57550a9c7d2120"
                       <Input
                         type="text"
                         name="thankYouMessage"
+                        value={this.state.thankYouMessage}
                         placeholder="thank-you-message"
                         onChange={this.onChange}
                       />
@@ -258,6 +297,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="website"
                         placeholder="website"
+                        value={this.state.website}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -272,6 +312,7 @@ _id: "5cbf355daa57550a9c7d2120"
                       <Input
                         type="text"
                         name="location"
+                        value={this.state.location}
                         placeholder="merchant's address"
                         onChange={this.onChange}
                       />
@@ -287,6 +328,7 @@ _id: "5cbf355daa57550a9c7d2120"
                       <Input
                         type="textarea"
                         name="summary"
+                        value={this.state.summary}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -302,6 +344,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="bank_name"
                         placeholder="bank-name"
+                        value={this.state.bank_name}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -317,6 +360,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="bank_account_name"
                         placeholder="account-name"
+                        value={this.state.bank_account_name}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -332,6 +376,7 @@ _id: "5cbf355daa57550a9c7d2120"
                         type="text"
                         name="bank_account_number"
                         placeholder="account-number"
+                        value={this.state.bank_account_number}
                         onChange={this.onChange}
                       />
                     </Col>
@@ -340,7 +385,7 @@ _id: "5cbf355daa57550a9c7d2120"
                   {/* CREATE MERCHANT */}
                   <FormGroup check row>
                     <Col sm={{ size: 9, offset: 3 }}>
-                      <Button onClick={this.onSubmit}>Create Merchant</Button>
+                      <Button onClick={this.onSubmit}>Update Merchant</Button>
                     </Col>
                   </FormGroup>
                 </Form>

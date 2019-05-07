@@ -16,6 +16,24 @@ export const createMerchantState = {
   website: '',
 };
 
+export const updateMerchantState = {
+  bannerImage: '', // file
+  name: '',
+  email: '',
+  phone: '',
+  ngo: false,
+  ngoPhoneNumber: '',
+  tagLine: '',
+  logo: '', // file
+  location: '',
+  bank_name: '',
+  bank_account_number: '',
+  bank_account_name: '',
+  summary: '',
+  thankYouMessage: '',
+  website: '',
+};
+
 // from existing ui form
 export const createMovieState = {
   name: '',
@@ -56,7 +74,6 @@ export const createGiftState = {
   time: '',
   winners_name: '',
   winners_email: '',
-  winners_email: '',
   winners_phone: '',
   quantity: '',
 };
@@ -86,15 +103,15 @@ const app = (min, max) => {
 
 export const ctg = () => {
   const randomNumber = app(1, 3);
-  if (randomNumber == 1) {
+  if (randomNumber === 1) {
     return 'adult';
   }
 
-  if (randomNumber == 2) {
+  if (randomNumber === 2) {
     return 'children';
   }
 
-  if (randomNumber == 3) {
+  if (randomNumber === 3) {
     return 'students';
   }
 };

@@ -302,7 +302,7 @@ class AddShowTime extends Component {
                           <Input
                             type="text"
                             name="price"
-                            placeholder="🤑🤑🤑"
+                            placeholder="$$$"
                             value={this.state.price}
                             onChange={this.onChange}
                           />
