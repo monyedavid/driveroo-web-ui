@@ -9,6 +9,13 @@ import cinemas from './cinema';
 import errors from './errors';
 import showtimes from './showtime';
 
+import filmHouseMoviesReducer from './filmHouseMoviesReducer';
+import nairaboxMoviesReducer from './nairaboxMoviesReducer';
+import locationsReducer from './locationsReducer';
+import showtimesReducer from './showtimesReducer';
+import { loadingReducer } from './loadingReducer';
+import { errorReducer } from './errorReducer';
+
 export default combineReducers({
   errors,
   gift,
@@ -19,4 +26,12 @@ export default combineReducers({
   voucher,
   cinemas,
   showtimes,
+
+  filmHouseMoviesReducer,
+  nairaboxMoviesReducer,
+  locationsReducer,
+  showtimesReducer,
+  loadingReducer,
+  errorReducer,
+
 });

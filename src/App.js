@@ -19,10 +19,13 @@ import ProgressPage from 'pages/ProgressPage';
 import TablePage from 'pages/TablePage';
 import TypographyPage from 'pages/TypographyPage';
 import WidgetPage from 'pages/WidgetPage';
+
 import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
+// CINEMA LINKING //
+import CinemaLinking from 'pages/CinemaLinking';
 // MOVIE PAGES ||
 import CreateMovie from 'pages/movie/CreateMovie';
 import ListMovies from 'pages/movie/ListMovies';
@@ -95,6 +98,14 @@ class App extends React.Component {
                 layout={MainLayout}
                 component={AuthModalPage}
               />
+
+              <LayoutRoute
+                exact
+                path="/cinema-linking"
+                layout={MainLayout}
+                component={CinemaLinking}
+              />
+
               <LayoutRoute
                 exact
                 path="/dashboard"
