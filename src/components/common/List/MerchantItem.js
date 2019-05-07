@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+
 // import classnames from 'classnames';
 // import PropTypes from 'prop-types';
 
@@ -8,6 +10,8 @@ export default class Merchant extends Component {
     const {
         ticketDetails: { _id, name, email, phone, location },
         index,
+        toggle,
+        history,
       } = this.props,
       update = `/update-merchant/${_id}`,
       details = `/details/${_id}`;
@@ -21,10 +25,21 @@ export default class Merchant extends Component {
             <td>{phone}</td>
             <td>{location}</td>
             <td>
-              <Link to={details}>Details</Link>
+              <Button color="secondary" onClick={toggle} size="lg" active>
+                details
+              </Button>
             </td>
             <td>
-              <Link to={update}>Edit</Link>
+              <Button
+                color="secondary"
+                onClick={() => {
+                  history.push(`/update-merchant/${_id}`);
+                }}
+                size="lg"
+                active
+              >
+                edit
+              </Button>
             </td>
           </tr>
         </tbody>

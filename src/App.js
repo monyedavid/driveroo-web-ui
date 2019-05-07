@@ -38,7 +38,7 @@ import RedeemedTickets from 'pages/redeem/RedeemedTickets';
 import CreateMerchant from 'pages/merchant/CreateMerchant';
 import ListMerchants from 'pages/merchant/ListMerchants';
 import UpdateMerchants from 'pages/merchant/UpdateMerchant';
-import MerchantDetails from 'pages/merchant/MerchantDetails';
+
 // TRANSACTIONS ACTIVITY
 import DailyTransactions from 'pages/transaction/DailyTransactions';
 import WeeklyTransactions from 'pages/transaction/WeeklyTransactions';
@@ -160,12 +160,6 @@ class App extends React.Component {
                 path="/update-merchant/:_id"
                 layout={MainLayout}
                 component={UpdateMerchants}
-              />
-              <LayoutRoute
-                exact
-                path="/details/:id"
-                layout={MainLayout}
-                component={MerchantDetails}
               />
               <LayoutRoute
                 exact
