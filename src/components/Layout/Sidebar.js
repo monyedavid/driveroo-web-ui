@@ -44,7 +44,12 @@ const sidebarBackground = {
 };
 
 const navMovies = [
-  { to: '/create-movie', name: 'Create Movie', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/create-movie',
+    name: 'Create Movie',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/list-movies',
     name: 'list movies',
@@ -54,7 +59,12 @@ const navMovies = [
 ];
 
 const navTransactions = [
-  { to: '/daily-transactions', name: 'Daily', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/daily-transactions',
+    name: 'Daily',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/weekly-transactions',
     name: 'Weekly',
@@ -76,7 +86,12 @@ const navTransactions = [
 ];
 
 const navRedemptions = [
-  { to: '/redeem-ticket', name: 'Redeem Ticket', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/redeem-ticket',
+    name: 'Redeem Ticket',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/redeemed-tickets',
     name: 'Redeemed Tickets',
@@ -86,7 +101,12 @@ const navRedemptions = [
 ];
 
 const navGifting = [
-  { to: '/gift-ticket', name: 'Gift Ticket', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/gift-ticket',
+    name: 'Gift Ticket',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/gifted-tickets',
     name: 'Gifted Tickets',
@@ -96,7 +116,12 @@ const navGifting = [
 ];
 
 const navVouchers = [
-  { to: '/create-voucher', name: 'Create Voucher', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/create-voucher',
+    name: 'Create Voucher',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/check-balance',
     name: 'Check Balance',
@@ -106,18 +131,27 @@ const navVouchers = [
 ];
 
 const navMerchants = [
-  { to: '/create-merchant', name: 'Create Merchant', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/create-merchant',
+    name: 'Create Merchant',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/list-merchants',
     name: 'List Merchants',
     exact: false,
     Icon: MdViewCarousel,
   },
-  { to: '/update-merchant', name: 'Update Merchant', exact: false, Icon: MdAccountCircle },
 ];
 
 const navImages = [
-  { to: '/home-banner', name: 'Home Banner', exact: false, Icon: MdAccountCircle },
+  {
+    to: '/home-banner',
+    name: 'Home Banner',
+    exact: false,
+    Icon: MdAccountCircle,
+  },
   {
     to: '/app-banner',
     name: 'App Banner',
@@ -186,13 +220,10 @@ class Sidebar extends React.Component {
                 className="pr-2"
                 alt=""
               />
-              <span className="text-white">
-                Nairabox Movies
-              </span>
+              <span className="text-white">Nairabox Movies</span>
             </SourceLink>
           </Navbar>
           <Nav vertical>
-
             {navItems.map(({ to, name, exact, Icon }, index) => (
               <NavItem key={index} className={bem.e('nav-item')}>
                 <BSNavLink
@@ -248,7 +279,6 @@ class Sidebar extends React.Component {
                 </NavItem>
               ))}
             </Collapse>
-
 
             {/* TRANSACTIONS... */}
             <NavItem
