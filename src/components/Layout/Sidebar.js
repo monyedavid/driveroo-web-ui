@@ -123,7 +123,7 @@ const navVouchers = [
     Icon: MdAccountCircle,
   },
   {
-    to: '/check-balance',
+    to: '/voucher-balance',
     name: 'Check Balance',
     exact: false,
     Icon: MdViewCarousel,

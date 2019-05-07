@@ -44,6 +44,10 @@ import DailyTransactions from 'pages/transaction/DailyTransactions';
 import WeeklyTransactions from 'pages/transaction/WeeklyTransactions';
 import MonthlyTransactions from 'pages/transaction/MonthlyTransactions';
 import RangeTransactions from 'pages/transaction/RangeTransactions';
+// VOUCHERS
+import CreateVoucher from 'pages/vouchers/CreateVoucher';
+import VoucherBalance from 'pages/vouchers/VoucherBalance';
+
 // ???????
 import HomeBanner from 'pages/HomeBanner';
 // PRIVATE ROUTER
@@ -186,6 +190,18 @@ class App extends React.Component {
                 path="/range-transactions"
                 layout={MainLayout}
                 component={RangeTransactions}
+              />
+              <LayoutRoute
+                exact
+                path="/create-voucher"
+                layout={MainLayout}
+                component={CreateVoucher}
+              />
+              <LayoutRoute
+                exact
+                path="/voucher-balance"
+                layout={MainLayout}
+                component={VoucherBalance}
               />
               <LayoutRoute
                 exact
