@@ -144,6 +144,8 @@ const pageContents = [
 const navItems = [
   { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
   { to: '/reports', name: 'reports', exact: false, Icon: MdWeb },
+  { to: '/cinema-linking', name: 'Cinema Linking', exact: false, Icon: MdWeb },
+
 ];
 
 const bem = bn.create('sidebar');
