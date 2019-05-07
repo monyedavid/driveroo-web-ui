@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import { dateDisplayFormatter } from '../../../utils/gendate';
+// import classnames from 'classnames';
+// import PropTypes from 'prop-types';
+// import { dateDisplayFormatter } from '../../../utils/gendate';
 
 export default class TransactionItem extends Component {
   render() {
@@ -31,9 +33,16 @@ export default class TransactionItem extends Component {
             <td>{platform}</td>
             <td>{eventName}</td>
             <td>{customerName}</td>
-            <th>{dateDisplayFormatter(createdAt, true)}</th>
+            <th>{moment(createdAt).format('MMMM Do YYYY, h:mm:ss a')}</th>
             <td>
-              <Link to={details}>Details</Link>
+              <Button
+                color="secondary"
+                // onClick={() => toggle(_id)}
+                size="lg"
+                active
+              >
+                details
+              </Button>
             </td>
           </tr>
         </tbody>
@@ -45,3 +54,4 @@ export default class TransactionItem extends Component {
     ) : null;
   }
 }
+// dateDisplayFormatter(createdAt, true)
