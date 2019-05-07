@@ -190,7 +190,7 @@ class AddShowTime extends Component {
                   </FormGroup>
                   <FormGroup check row>
                     <Col sm={{ size: 9, offset: 3 }}>
-                      <Button>Create Movie</Button>
+                      <Button>Submit Showtime</Button>
                     </Col>
                   </FormGroup>
                 </Form>

@@ -98,7 +98,7 @@ const navGifting = [
 const navVouchers = [
   { to: '/create-voucher', name: 'Create Voucher', exact: false, Icon: MdAccountCircle },
   {
-    to: '/check-balance',
+    to: '/voucher-balance',
     name: 'Check Balance',
     exact: false,
     Icon: MdViewCarousel,
