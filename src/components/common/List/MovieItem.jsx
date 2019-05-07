@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
+// import classnames from 'classnames';
+// import PropTypes from 'prop-types';
 
 export default class TicketItem extends Component {
   render() {
@@ -15,6 +15,7 @@ export default class TicketItem extends Component {
           duration,
           genre,
         },
+        history,
       } = this.props,
       addShowtimeLink = `/add-showtime/${_id}`;
     return (
@@ -29,7 +30,16 @@ export default class TicketItem extends Component {
             <td>{duration}</td>
             <td>{genre}</td>
             <td>
-              <Link to={addShowtimeLink}>Add Showtime</Link>
+              <Button
+                color="secondary"
+                onClick={() => {
+                  history.push(addShowtimeLink);
+                }}
+                size="lg"
+                active
+              >
+                Add Showtime
+              </Button>
             </td>
           </tr>
         </tbody>
