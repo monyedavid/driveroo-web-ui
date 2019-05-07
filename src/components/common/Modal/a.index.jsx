@@ -14,7 +14,9 @@ const NewDialogue = ({
   return (
     <Modal
       isOpen={isOpen}
-      toggle={toggle}
+      toggle={() => {
+        toggle();
+      }}
       centered={true}
       className={className}
       external={externalCloseBtn}
