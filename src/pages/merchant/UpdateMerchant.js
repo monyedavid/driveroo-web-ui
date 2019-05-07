@@ -80,7 +80,48 @@ class CreateMerchant extends Component {
 
   onSubmit = async e => {
     e.preventDefault();
-    console.log(this.state);
+    const {
+      merch: { merchant },
+      updateMerchant,
+      history,
+    } = this.props;
+
+    const updatedItems = {
+      ...this.state,
+    };
+
+    const fd = new FormData();
+
+    Object.keys(updatedItems).forEach(key => {
+      if (
+        key === 'bank_account_name' ||
+        key === 'bank_account_number' ||
+        key == 'bank_name'
+      ) {
+        return;
+      }
+      if (updatedItems[key] === merchant[key]) {
+        delete updatedItems[key];
+      }
+    });
+
+    Object.keys(updatedItems).forEach(k => {
+      if (k === 'bannerImage') {
+        return fd.append(
+          'bannerImage',
+          this.state.bannerImage['0'],
+          this.state.bannerImage['0'].name,
+        );
+      }
+
+      if (k === 'logo') {
+        return fd.append('logo', this.state.logo[0], this.state.logo['0'].name);
+      }
+
+      fd.append(k, updatedItems[k]);
+    });
+
+    updateMerchant(merchant._id, fd, history);
   };
 
   render() {
@@ -150,11 +191,7 @@ class CreateMerchant extends Component {
                     </Label>
                     <Col sm={8}>
                       <Input type="file" name="logo" onChange={this.onChange} />
-                      {this.state.logo !== '' ? (
-                        <FormText color="muted">{this.state.logo}</FormText>
-                      ) : (
-                        <FormText color="muted">Size: 100px by 100px</FormText>
-                      )}
+                      <FormText color="muted">Size: 100px by 100px</FormText>
                     </Col>
                   </FormGroup>
 
@@ -194,11 +231,7 @@ class CreateMerchant extends Component {
                         name="bannerImage"
                         onChange={this.onChange}
                       />
-                      {this.state.bannerImage !== '' ? (
-                        <FormText color="muted">{this.state.logo}</FormText>
-                      ) : (
-                        <FormText color="muted">Size: 100px by 100px</FormText>
-                      )}
+                      <FormText color="muted">Size: 450px by 200px</FormText>
                     </Col>
                   </FormGroup>
 
