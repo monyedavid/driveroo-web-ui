@@ -36,7 +36,7 @@ export const getMerchant = id => async dispatch => {
   dispatch(setMerchantLoading());
   // MAKME REQUEST
   axios
-    .get(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/${id}`)
+    .get(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/?_id=${id}`)
     .then(({ data }) =>
       dispatch({
         type: GET_MERCHANT,
@@ -60,6 +60,32 @@ export const addMerchants = (data, history) => async dispatch => {
 
   axios
     .post(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/new`, data, config)
+    .then(result => history.push('/list-merchants'))
+    .catch(error =>
+      error.response
+        ? dispatch({
+            type: GET_ERRORS,
+            payload: error.response.data,
+          })
+        : dispatch({
+            type: GET_ERRORS,
+            payload: {
+              path: 'no response',
+              mssg: 'couldnt reach the server please try again later',
+            },
+          }),
+    );
+};
+
+export const updateMerchant = (_id, data, history) => async dispatch => {
+  const config = {
+    headers: {
+      'content-type': 'multipart/form-data',
+    },
+  };
+
+  axios
+    .post(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/${_id}`, data, config)
     .then(result => history.push('/list-merchants'))
     .catch(error =>
       error.response
