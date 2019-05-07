@@ -32,7 +32,9 @@ class ListMerchants extends Component {
   }
 
   toggle(_id) {
-    this.props.getMerchant(_id);
+    if (_id) {
+      this.props.getMerchant(_id);
+    }
     this.setState(prevState => ({
       modal: !prevState.modal,
     }));
@@ -65,48 +67,52 @@ class ListMerchants extends Component {
     let merchantDialog;
     let dialogueAction;
 
-    // populates data table loaidng a merchant??
+    if (merchant && !loading) {
+      // populates data table loaidng a merchant??
+      dialogueTitle = (
+        <DialogueTitle
+          simpleContext={
+            merchant === null || merchant === undefined ? '' : merchant.name
+          }
+        />
+      );
 
-    if (!loading && merchant !== null && merchants !== null) {
+      dialogueContent = (
+        <DialogueContent
+          contextComponent={
+            merchant === null ? (
+              <LoadSpinner src={spin} />
+            ) : (
+              <MerchantDetails {...merchant} />
+            )
+          }
+        />
+      );
+
+      dialogueAction = (
+        <DialogueAction
+          contextComponent={
+            <Button color="secondary" onClick={this.close}>
+              Cancel
+            </Button>
+          }
+        />
+      );
+
+      merchantDialog = (
+        <Dialogue
+          DialogTitle={dialogueTitle}
+          DialogContent={dialogueContent}
+          DialogActions={dialogueAction}
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          // className={}
+          externalCloseBtn={externalCloseBtn}
+        />
+      );
+    } else {
+      merchantDialog = <React.Fragment />;
     }
-
-    dialogueTitle = (
-      <DialogueTitle simpleContext={merchant === null ? '' : merchant.name} />
-    );
-
-    dialogueContent = (
-      <DialogueContent
-        contextComponent={
-          merchant === null ? (
-            <LoadSpinner src={spin} />
-          ) : (
-            <MerchantDetails {...merchant} />
-          )
-        }
-      />
-    );
-
-    dialogueAction = (
-      <DialogueAction
-        contextComponent={
-          <Button color="secondary" onClick={this.toggle}>
-            Cancel
-          </Button>
-        }
-      />
-    );
-
-    merchantDialog = (
-      <Dialogue
-        DialogTitle={dialogueTitle}
-        DialogContent={dialogueContent}
-        DialogActions={dialogueAction}
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        // className={}
-        externalCloseBtn={externalCloseBtn}
-      />
-    );
 
     loading === true && merchants == null
       ? (listMerchantItems = <React.Fragment />)
