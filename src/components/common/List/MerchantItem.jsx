@@ -8,13 +8,12 @@ import { Button } from 'reactstrap';
 export default class Merchant extends Component {
   render() {
     const {
-        ticketDetails: { _id, name, email, phone, location },
-        index,
-        toggle,
-        history,
-      } = this.props,
-      update = `/update-merchant/${_id}`,
-      details = `/details/${_id}`;
+      ticketDetails: { _id, name, email, phone, location },
+      index,
+      toggle,
+      history,
+    } = this.props;
+
     return (
       <React.Fragment>
         <tbody>
@@ -25,7 +24,12 @@ export default class Merchant extends Component {
             <td>{phone}</td>
             <td>{location}</td>
             <td>
-              <Button color="secondary" onClick={toggle} size="lg" active>
+              <Button
+                color="secondary"
+                onClick={() => toggle(_id)}
+                size="lg"
+                active
+              >
                 details
               </Button>
             </td>

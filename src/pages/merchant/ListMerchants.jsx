@@ -4,10 +4,17 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Card, CardBody, CardHeader, Col, Table, Row } from 'reactstrap';
 import MerchantItem from '../../components/common/List/MerchantItem';
-// MODAL
+// MODAL CREATE DYNAMIC MODALS
+import Dialogue from '../../components/common/Modal/a.index';
 import DialogueTitle from '../../components/common/Modal/Title';
-import DemoModal from '../../components/common/Modal/index';
-import { getMerchants } from '../../redux/actions/merchant';
+import DialogueContent from '../../components/common/Modal/Content';
+import DialogueAction from '../../components/common/Modal/Action';
+import { MerchantDetails } from './MerchantDetails';
+import LoadSpinner from '../../components/common/spinner';
+import spin from '../../utils/spin.gif';
+
+import { getMerchants, getMerchant } from '../../redux/actions/merchant';
+import { Button } from 'reactstrap';
 
 class ListMerchants extends Component {
   constructor(props) {
@@ -24,8 +31,14 @@ class ListMerchants extends Component {
     getMerchants();
   }
 
-  toggle() {
-    console.log('YO TEST');
+  toggle(_id) {
+    this.props.getMerchant(_id);
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+    }));
+  }
+
+  close() {
     this.setState(prevState => ({
       modal: !prevState.modal,
     }));
@@ -33,9 +46,67 @@ class ListMerchants extends Component {
 
   render() {
     const {
-      merch: { loading, merchants },
+      merch: { loading, merchants, merchant },
     } = this.props;
     let listMerchantItems;
+
+    const externalCloseBtn = (
+      <button
+        className="close"
+        style={{ position: 'absolute', top: '15px', right: '15px' }}
+        onClick={this.close}
+      >
+        &times;
+      </button>
+    );
+
+    let dialogueTitle;
+    let dialogueContent;
+    let merchantDialog;
+    let dialogueAction;
+
+    // populates data table loaidng a merchant??
+
+    if (!loading && merchant !== null && merchants !== null) {
+    }
+
+    dialogueTitle = (
+      <DialogueTitle simpleContext={merchant === null ? '' : merchant.name} />
+    );
+
+    dialogueContent = (
+      <DialogueContent
+        contextComponent={
+          merchant === null ? (
+            <LoadSpinner src={spin} />
+          ) : (
+            <MerchantDetails {...merchant} />
+          )
+        }
+      />
+    );
+
+    dialogueAction = (
+      <DialogueAction
+        contextComponent={
+          <Button color="secondary" onClick={this.toggle}>
+            Cancel
+          </Button>
+        }
+      />
+    );
+
+    merchantDialog = (
+      <Dialogue
+        DialogTitle={dialogueTitle}
+        DialogContent={dialogueContent}
+        DialogActions={dialogueAction}
+        isOpen={this.state.modal}
+        toggle={this.toggle}
+        // className={}
+        externalCloseBtn={externalCloseBtn}
+      />
+    );
 
     loading === true && merchants == null
       ? (listMerchantItems = <React.Fragment />)
@@ -55,7 +126,8 @@ class ListMerchants extends Component {
 
     return (
       <React.Fragment>
-        <DemoModal modal={this.state.modal} toggle={this.toggle} />
+        {merchantDialog}
+        {/* <DemoModal modal={this.state.modal} toggle={this.toggle} /> */}
         <Page
           title="List Merchants"
           breadcrumbs={[{ name: 'List Merchants', active: true }]}
@@ -99,5 +171,5 @@ const map_state_to_props = state => ({
 
 export default connect(
   map_state_to_props,
-  { getMerchants },
+  { getMerchants, getMerchant },
 )(withRouter(ListMerchants));
