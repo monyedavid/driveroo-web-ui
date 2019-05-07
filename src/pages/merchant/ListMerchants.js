@@ -49,7 +49,7 @@ class ListMerchants extends Component {
                           <th>Phone</th>
                           <th>Location</th>
                           <th>Details</th>
-                          <th>Edit/Delete</th>
+                          <th>Edit</th>
                         </tr>
                       </thead>
                       {listMerchantItems}

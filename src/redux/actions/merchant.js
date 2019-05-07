@@ -85,8 +85,11 @@ export const updateMerchant = (_id, data, history) => async dispatch => {
   };
 
   axios
-    .post(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/${_id}`, data, config)
-    .then(result => history.push('/list-merchants'))
+    .put(`${MOVIE_DASHBOARD_API_LOCAL}/merchants/${_id}`, data, config)
+    .then(result => {
+      console.log(result);
+      history.push('/list-merchants');
+    })
     .catch(error =>
       error.response
         ? dispatch({
