@@ -19,10 +19,13 @@ import ProgressPage from 'pages/ProgressPage';
 import TablePage from 'pages/TablePage';
 import TypographyPage from 'pages/TypographyPage';
 import WidgetPage from 'pages/WidgetPage';
+
 import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
+// CINEMA LINKING //
+import CinemaLinking from 'pages/CinemaLinking';
 // MOVIE PAGES ||
 import CreateMovie from 'pages/movie/CreateMovie';
 import ListMovies from 'pages/movie/ListMovies';
@@ -38,7 +41,7 @@ import RedeemedTickets from 'pages/redeem/RedeemedTickets';
 import CreateMerchant from 'pages/merchant/CreateMerchant';
 import ListMerchants from 'pages/merchant/ListMerchants';
 import UpdateMerchants from 'pages/merchant/UpdateMerchant';
-import MerchantDetails from 'pages/merchant/MerchantDetails';
+
 // TRANSACTIONS ACTIVITY
 import DailyTransactions from 'pages/transaction/DailyTransactions';
 import WeeklyTransactions from 'pages/transaction/WeeklyTransactions';
@@ -95,6 +98,14 @@ class App extends React.Component {
                 layout={MainLayout}
                 component={AuthModalPage}
               />
+
+              <LayoutRoute
+                exact
+                path="/cinema-linking"
+                layout={MainLayout}
+                component={CinemaLinking}
+              />
+
               <LayoutRoute
                 exact
                 path="/dashboard"
@@ -160,12 +171,6 @@ class App extends React.Component {
                 path="/update-merchant/:_id"
                 layout={MainLayout}
                 component={UpdateMerchants}
-              />
-              <LayoutRoute
-                exact
-                path="/details/:id"
-                layout={MainLayout}
-                component={MerchantDetails}
               />
               <LayoutRoute
                 exact

@@ -27,7 +27,11 @@ class ListMovies extends Component {
       ? (list_movieTicket_items = <React.Fragment />)
       : movieTickets.AllTickets.length > 0
       ? (list_movieTicket_items = movieTickets.AllTickets.map(mt => (
-          <TicketItem key={mt._id} ticketDetails={mt} />
+          <TicketItem
+            key={mt._id}
+            ticketDetails={mt}
+            history={this.props.history}
+          />
         )))
       : (list_movieTicket_items = <h4>No Movie Tickets Where Found!</h4>);
 
