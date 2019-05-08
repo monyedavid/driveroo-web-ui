@@ -53,7 +53,6 @@ class WeeklyTransactions extends Component {
     let data = transaction.weekly;
 
     if (typeof index === 'number') {
-      console.log('YAHH');
       setTransaction(data[index]);
     }
     this.setState(prevState => ({
