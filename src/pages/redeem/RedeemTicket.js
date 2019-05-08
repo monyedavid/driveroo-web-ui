@@ -91,18 +91,18 @@ class RedeemTicket extends Component {
                   </thead>
                   <tr>
                     <td>1</td>
-                    <td>Customer Name<br />Customer Email<br />Customer Phone No</td>
-                    <td>Filmhouse, Lekki<br />Avengers Endgame<br />24-Mar-2019; 11:40Am</td>
-                    <td>Date: 15-Mar-2019<br/>Time: 6:05 PM<br/>Category: Adult</td>
+                    <td>Oluwatunmbi Banto<br /><br />someverylongemail@gmail.com<br /><br />08074665617</td>
+                    <td>Filmhouse, Lekki<br /><br />The Big Curse of La LLrona<br /><br />24-Mar-2019; 11:40Am</td>
+                    <td>Date: 15-Mar-2019<br /><br />Time: 6:05 PM<br /><br />Category: Adult</td>
                     <td>ISSUED<br /></td>
                     <td>Qty: 2<br/>Amt: N4,000</td>
                     <td><Button>Redeem</Button></td>
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td>Customer Name<br />Customer Email<br />Customer Phone No</td>
-                    <td>Filmhouse, Lekki<br />Avengers Endgame<br />24-Mar-2019; 11:40Am</td>
-                    <td>Date: 15-Mar-2019<br />Time: 6:05 PM<br />Category: Adult</td>
+                    <td>Customer Name<br /><br />Customer Email<br /><br />Customer Phone No</td>
+                    <td>Filmhouse, Lekki<br /><br />Avengers Endgame<br /><br />24-Mar-2019; 11:40Am</td>
+                    <td>Date: 15-Mar-2019<br /><br />Time: 6:05 PM<br /><br />Category: Adult</td>
                     <td>ISSUED<br /></td>
                     <td>Qty: 2<br />Amt: N4,000</td>
                     <td><Button>Redeem</Button></td>
