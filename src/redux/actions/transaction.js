@@ -6,6 +6,7 @@ import {
   GET_RANGE,
   TRANSACTION_LOADING,
   GET_WEEKLY_TRANSACTION,
+  SET_TRANSACTION,
 } from '../types';
 
 export const setTransactionLoading = _ => {
@@ -88,4 +89,12 @@ export const getRange = (type, min, max) => dispatch => {
         payload: null,
       }),
     );
+};
+
+export const setTransaction = data => dispatch => {
+  dispatch(setTransactionLoading());
+  dispatch({
+    type: SET_TRANSACTION,
+    payload: data,
+  });
 };

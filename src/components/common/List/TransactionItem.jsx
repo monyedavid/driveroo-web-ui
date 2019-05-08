@@ -9,20 +9,20 @@ import { Link } from 'react-router-dom';
 export default class TransactionItem extends Component {
   render() {
     const {
-        transactionDetails: {
-          _id,
-          amount,
-          platform,
-          transactionID,
-          uid,
-          eventName,
-          customerName,
-          createdAt,
-        },
-        index,
-        type,
-      } = this.props,
-      details = `/details/${_id}`;
+      transactionDetails: {
+        _id,
+        amount,
+        platform,
+        transactionID,
+        uid,
+        eventName,
+        customerName,
+        createdAt,
+      },
+      index,
+      toggle,
+      type,
+    } = this.props;
     return type === 2 ? (
       <React.Fragment>
         <tbody>
@@ -37,7 +37,7 @@ export default class TransactionItem extends Component {
             <td>
               <Button
                 color="secondary"
-                // onClick={() => toggle(_id)}
+                onClick={() => toggle(index)}
                 size="lg"
                 active
               >

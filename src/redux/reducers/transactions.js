@@ -4,6 +4,7 @@ import {
   GET_WEEKLY_TRANSACTION,
   GET_MONTHLY_TRANSACTION,
   GET_RANGE,
+  SET_TRANSACTION,
 } from '../types';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   weekly: null,
   monthly: null,
   loading: false,
+  detail: null,
 };
 
 export default function(state = initialState, action) {
@@ -44,6 +46,12 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         range: action.payload,
+      };
+    case SET_TRANSACTION:
+      return {
+        ...state,
+        loading: false,
+        detail: action.payload,
       };
     default:
       return state;

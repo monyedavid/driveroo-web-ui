@@ -2,7 +2,15 @@ import Page from 'components/Page';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { Card, CardBody, CardHeader, Col, Table, Row } from 'reactstrap';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Table,
+  Row,
+} from 'reactstrap';
 import MerchantItem from '../../components/common/List/MerchantItem';
 // MODAL CREATE DYNAMIC MODALS
 import Dialogue from '../../components/common/Modal/a.index';
@@ -14,7 +22,6 @@ import LoadSpinner from '../../components/common/spinner';
 import spin from '../../utils/spin.gif';
 
 import { getMerchants, getMerchant } from '../../redux/actions/merchant';
-import { Button } from 'reactstrap';
 
 class ListMerchants extends Component {
   constructor(props) {
