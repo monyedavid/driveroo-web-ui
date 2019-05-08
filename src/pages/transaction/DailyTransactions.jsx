@@ -40,6 +40,7 @@ class DailyTransactions extends Component {
       max: '2019-03-16',
     };
 
+    this.close = this.close.bind(this);
     this.toggle = this.toggle.bind(this);
   }
 
@@ -124,7 +125,7 @@ class DailyTransactions extends Component {
         <Dialogue
           DialogTitle={dialogueTitle}
           DialogContent={dialogueContent}
-          DialogActions={dialogueAction}
+          // DialogActions={dialogueAction}
           isOpen={this.state.modal}
           toggle={this.toggle}
           // className={}

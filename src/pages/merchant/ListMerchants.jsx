@@ -31,6 +31,7 @@ class ListMerchants extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.close = this.close.bind(this);
   }
 
   componentDidMount() {

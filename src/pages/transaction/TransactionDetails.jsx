@@ -9,7 +9,6 @@ export const TransactionDetail = ({
   uid,
   destination,
   amount,
-  message,
   className,
   eventName,
   purchaseID,
@@ -31,36 +30,31 @@ export const TransactionDetail = ({
   currency,
 }) => {
   return (
-    <div>These Nuts</div>
-    // <Page>
-    //   <Row>
-    //     <Col xl={6} lg={6} md={6}>
-    //       <ListGroup>
-    //         <ListGroupItem>Email: {email}</ListGroupItem>
-    //         <ListGroupItem>Phone: {phone}</ListGroupItem>
-    //         <ListGroupItem>
-    //           Is Merchant an NGO: {ngo ? 'Yes' : 'no'}
-    //         </ListGroupItem>
-    //         {/* <ListGroupItem>Banner Image: </ListGroupItem> */}
-    //         {ngo ? (
-    //           <ListGroupItem>NGO Phone: {ngoPhoneNumber} </ListGroupItem>
-    //         ) : null}
-    //         <ListGroupItem>Tagline: {tagLine}</ListGroupItem>
-    //       </ListGroup>
-    //     </Col>
-    //     <Col xl={6} lg={6} md={6}>
-    //       <ListGroup>
-    //         <ListGroupItem>Thank You Message: {thankYouMessage} </ListGroupItem>
-    //         <ListGroupItem>Website: {website}</ListGroupItem>
-    //         <ListGroupItem>Location: {location}</ListGroupItem>
-    //         <ListGroupItem>Summary: {summary}</ListGroupItem>
-    //         <ListGroupItem>Bank Name: {name} </ListGroupItem>
-    //         <ListGroupItem>Account Number: {accountNumber}</ListGroupItem>
-    //         <ListGroupItem>Account Name {accountName}:</ListGroupItem>
-    //       </ListGroup>
-    //     </Col>
-    //   </Row>
-    // </Page>
+    <Page>
+      <Row>
+        <Col xl={6} lg={6} md={6}>
+          <ListGroup>
+            <ListGroupItem>Customer Name: {customerName}</ListGroupItem>
+            <ListGroupItem>Customer Email: {customerEmail}</ListGroupItem>
+            <ListGroupItem>Custonmer Phone: {customerPhone}</ListGroupItem>
+            <ListGroupItem>Platform : {platform}</ListGroupItem>
+            <ListGroupItem>Transfer Fee: {transferFee}</ListGroupItem>
+            <ListGroupItem>Balance: {balance}</ListGroupItem>
+          </ListGroup>
+        </Col>
+        <Col xl={6} lg={6} md={6}>
+          <ListGroup>
+            <ListGroupItem>Destination: {destination} </ListGroupItem>
+            <ListGroupItem>Amount: {amount}</ListGroupItem>
+            <ListGroupItem>Class Name: {className} </ListGroupItem>
+            <ListGroupItem>Class ID {classID}:</ListGroupItem>
+            <ListGroupItem>Event Name: {eventName} </ListGroupItem>
+            <ListGroupItem>Purchase ID: {purchaseID}</ListGroupItem>
+            <ListGroupItem>Status: {status}</ListGroupItem>
+          </ListGroup>
+        </Col>
+      </Row>
+    </Page>
   );
 };
 
