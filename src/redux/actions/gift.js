@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { MOVIE_DASHBOARD_API_LOCAL } from '../axios.request.link';
-import { GIFT_LOADING, GET_GIFT, GET_GIFTS, GET_ERRORS } from '../types';
+import {
+  GIFT_LOADING,
+  GET_GIFT,
+  GET_GIFTS,
+  GET_ERRORS,
+  SET_GIFT,
+} from '../types';
 
 export const giftLoading = () => {
   return {
@@ -65,4 +71,12 @@ export const addGift = (data, history) => async dispatch => {
             },
           }),
     );
+};
+
+export const setGift = data => dispatch => {
+  dispatch(giftLoading());
+  dispatch({
+    type: SET_GIFT,
+    payload: data,
+  });
 };

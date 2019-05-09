@@ -51,6 +51,7 @@ export const ERROR_CLEAR = 'ERROR_CLEAR';
 export const GIFT_LOADING = 'GIFT_LOADING';
 export const GET_GIFTS = 'GET_GIFTS';
 export const GET_GIFT = 'GET_GIFT';
+export const SET_GIFT = 'SET_GIFT';
 // VOUCHERS...
 
 // MERCHANTS...
