@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import GiftedItem from '../../components/common/List/GiftItem';
+import { GiftDetail } from './GiftDetails';
 // MODAL CREATE DYNAMIC MODALS
 import Dialogue from '../../components/common/Modal/a.index';
 import DialogueTitle from '../../components/common/Modal/Title';
@@ -13,7 +14,7 @@ import DialogueAction from '../../components/common/Modal/Action';
 // SPINNER IMAGES
 import LoadSpinner from '../../components/common/spinner';
 import spin from '../../utils/spin2.gif';
-import { getGifts } from '../../redux/actions/gift';
+import { getGifts, setGift } from '../../redux/actions/gift';
 
 class GiftedTickets extends Component {
   constructor(props) {
@@ -27,11 +28,14 @@ class GiftedTickets extends Component {
   }
 
   toggle(index) {
-    const { gifts } = this.props;
-    let data = gifts.gift;
+    const {
+      gifts: { gifts },
+      setGift,
+    } = this.props;
+    let data = gifts;
 
     if (typeof index === 'number') {
-      console.log('YAHH');
+      setGift(data[index]);
     }
     this.setState(prevState => ({
       modal: !prevState.modal,
@@ -74,7 +78,7 @@ class GiftedTickets extends Component {
       dialogueTitle = (
         <DialogueTitle
           simpleContext={
-            detail === null || detail === undefined ? '' : detail.message
+            detail === null || detail === undefined ? '' : detail.winners_name
           }
         />
       );
@@ -84,8 +88,7 @@ class GiftedTickets extends Component {
             detail === null ? (
               <LoadSpinner src={spin} />
             ) : (
-              <LoadSpinner src={spin} />
-              // <TransactionDetail {...detail} />
+              <GiftDetail {...detail} />
             )
           }
         />
@@ -174,5 +177,5 @@ const map_state_to_props = state => ({
 
 export default connect(
   map_state_to_props,
-  { getGifts },
+  { getGifts, setGift },
 )(GiftedTickets);

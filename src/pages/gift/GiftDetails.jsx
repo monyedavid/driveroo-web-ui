@@ -3,14 +3,13 @@ import moment from 'moment';
 import Page from 'components/Page';
 import { Col, ListGroup, ListGroupItem, Row } from 'reactstrap';
 
-export const TransactionDetail = ({
+export const GiftDetail = ({
   _id,
   updatedAt,
   createdAt,
   movie,
   cinema,
   date,
-  winners_name,
   winners_email,
   winners_phone,
   quantity,
@@ -21,7 +20,6 @@ export const TransactionDetail = ({
       <Row>
         <Col xl={6} lg={6} md={6}>
           <ListGroup>
-            <ListGroupItem>Customer Name: {winners_name}</ListGroupItem>
             <ListGroupItem>Customer Email: {winners_email}</ListGroupItem>
             <ListGroupItem>Custonmer Phone: {winners_phone}</ListGroupItem>
             <ListGroupItem>Quantity: {quantity}</ListGroupItem>
