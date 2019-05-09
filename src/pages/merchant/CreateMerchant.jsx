@@ -181,19 +181,21 @@ class CreateMerchant extends Component {
                   </FormGroup>
 
                   {/* NGO PHONE NUMBER  */}
-                  <FormGroup row>
-                    <Label for="ngoPhoneNumber" sm={3}>
-                      NGO's Phone
-                    </Label>
-                    <Col sm={8}>
-                      <Input
-                        type="text"
-                        name="ngoPhoneNumber"
-                        placeholder="ngo-phone"
-                        onChange={this.onChange}
-                      />
-                    </Col>
-                  </FormGroup>
+                  {this.state.ngo ? (
+                    <FormGroup row>
+                      <Label for="ngoPhoneNumber" sm={3}>
+                        NGO's Phone
+                      </Label>
+                      <Col sm={8}>
+                        <Input
+                          type="text"
+                          name="ngoPhoneNumber"
+                          placeholder="ngo-phone"
+                          onChange={this.onChange}
+                        />
+                      </Col>
+                    </FormGroup>
+                  ) : null}
 
                   {/* TAGLINE */}
                   <FormGroup row>
