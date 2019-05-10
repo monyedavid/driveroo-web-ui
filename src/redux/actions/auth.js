@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../../utils/auth/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER } from '../type';
+import { GET_ERRORS, SET_CURRENT_USER } from '../types';
 import { MOVIE_DASHBOARD_API_LOCAL } from '../axios.request.link';
 
 // Register User

@@ -53,12 +53,17 @@ import VoucherBalance from 'pages/vouchers/VoucherBalance';
 
 // ???????
 import HomeBanner from 'pages/HomeBanner';
+
 // PRIVATE ROUTER
 import PrivateRoute from 'components/common/PrivateRoute';
+import {
+  check_token_storage,
+  expired_token_logout,
+} from 'utils/auth/checkTokenStorage';
 
 // REDUX
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from 'redux/store';
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
