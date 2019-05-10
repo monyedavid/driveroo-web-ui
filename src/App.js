@@ -65,6 +65,10 @@ import {
 import { Provider } from 'react-redux';
 import store from 'redux/store';
 
+// Check for token and set user
+check_token_storage();
+expired_token_logout();
+
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
