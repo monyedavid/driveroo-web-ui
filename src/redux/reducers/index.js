@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import auth from './auth';
 import movieTickets from './movie';
 import voucher from './vouchers';
 import gift from './gifting';
@@ -17,6 +18,7 @@ import { loadingReducer } from './loadingReducer';
 import { errorReducer } from './errorReducer';
 
 export default combineReducers({
+  auth,
   errors,
   gift,
   merchant,
@@ -33,5 +35,4 @@ export default combineReducers({
   showtimesReducer,
   loadingReducer,
   errorReducer,
-
 });
