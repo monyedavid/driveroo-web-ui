@@ -2,7 +2,6 @@ import logo200Image from 'assets/img/logo/logo_200.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import { connect } from 'react-redux';
 
 class AuthForm extends React.Component {
   get isLogin() {
@@ -151,11 +150,4 @@ AuthForm.defaultProps = {
   onLogoClick: () => {},
 };
 
-const map_state_to_props = state => ({
-  auth: state.auth,
-  erors: state.errors,
-});
-export default connect(
-  map_state_to_props,
-  {},
-)(AuthForm);
+export default AuthForm;

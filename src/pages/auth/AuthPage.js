@@ -1,8 +1,25 @@
+import React, { Component } from 'react';
 import AuthForm, { STATE_LOGIN, STATE_SIGNUP } from 'components/auth/AuthForm';
-import React from 'react';
 import { Card, Col, Row } from 'reactstrap';
+import { connect } from 'react-redux';
 
-class AuthPage extends React.Component {
+class AuthPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      confirm: '',
+      errors: {},
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   handleAuthState = authState => {
     console.log('this is auth state', authState);
     if (authState) {
@@ -53,4 +70,12 @@ class AuthPage extends React.Component {
   }
 }
 
-export default AuthPage;
+const map_state_to_props = state => ({
+  auth: state.auth,
+  erors: state.errors,
+});
+
+export default connect(
+  map_state_to_props,
+  {},
+)(AuthPage);
