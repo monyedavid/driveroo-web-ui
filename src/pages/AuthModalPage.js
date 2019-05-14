@@ -1,4 +1,4 @@
-import AuthForm, { STATE_LOGIN } from 'components/AuthForm';
+import AuthForm, { STATE_LOGIN } from 'components/auth/AuthForm';
 import Page from 'components/Page';
 import React from 'react';
 import {
@@ -40,7 +40,8 @@ class AuthModalPage extends React.Component {
           right: '20px',
           fontSize: '3rem',
         }}
-        onClick={this.toggle}>
+        onClick={this.toggle}
+      >
         &times;
       </button>
     );
@@ -48,7 +49,8 @@ class AuthModalPage extends React.Component {
     return (
       <Page
         title="Login Modal"
-        breadcrumbs={[{ name: 'login modal', active: true }]}>
+        breadcrumbs={[{ name: 'login modal', active: true }]}
+      >
         <Row>
           <Col md="12" sm="12" xs="12">
             <Card>
@@ -64,7 +66,8 @@ class AuthModalPage extends React.Component {
                   backdrop="static"
                   backdropClassName="modal-backdrop-light"
                   external={externalCloseBtn}
-                  centered>
+                  centered
+                >
                   <ModalBody>
                     <AuthForm
                       authState={this.state.authState}

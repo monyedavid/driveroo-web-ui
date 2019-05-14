@@ -1,4 +1,4 @@
-import { STATE_LOGIN, STATE_SIGNUP } from 'components/AuthForm';
+import { STATE_LOGIN, STATE_SIGNUP } from 'components/auth/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import AlertPage from 'pages/AlertPage';

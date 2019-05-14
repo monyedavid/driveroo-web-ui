@@ -1,4 +1,4 @@
-import AuthForm, { STATE_LOGIN } from 'components/AuthForm';
+import AuthForm, { STATE_LOGIN } from 'components/auth/AuthForm';
 import React from 'react';
 import { Button, Modal, ModalBody } from 'reactstrap';
 
@@ -31,7 +31,8 @@ class AuthModal extends React.Component {
           toggle={this.toggle}
           size="sm"
           fade={false}
-          centered>
+          centered
+        >
           <ModalBody>
             <AuthForm
               authState={this.state.authState}
