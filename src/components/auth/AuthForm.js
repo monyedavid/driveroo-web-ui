@@ -2,6 +2,7 @@ import logo200Image from 'assets/img/logo/logo_200.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { connect } from 'react-redux';
 
 class AuthForm extends React.Component {
   get isLogin() {
@@ -18,9 +19,9 @@ class AuthForm extends React.Component {
     this.props.onChangeAuthState(authState);
   };
 
-  handleSubmit = authState => event => {
+  handleSubmit = event => {
     event.preventDefault();
-    this.props.onChangeAuthState(authState);
+    this.props.onChangeAuthState();
   };
 
   renderButtonText() {
@@ -88,7 +89,7 @@ class AuthForm extends React.Component {
           size="lg"
           className="bg-gradient-theme-left border-0"
           block
-          onClick={this.handleSubmit(STATE_LOGIN)}
+          onClick={this.handleSubmit}
         >
           {this.renderButtonText()}
         </Button>
@@ -150,4 +151,11 @@ AuthForm.defaultProps = {
   onLogoClick: () => {},
 };
 
-export default AuthForm;
+const map_state_to_props = state => ({
+  auth: state.auth,
+  erors: state.errors,
+});
+export default connect(
+  map_state_to_props,
+  {},
+)(AuthForm);
