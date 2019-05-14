@@ -2,8 +2,9 @@ import { STATE_LOGIN, STATE_SIGNUP } from 'components/auth/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import AlertPage from 'pages/AlertPage';
-import AuthModalPage from 'pages/AuthModalPage';
-import AuthPage from 'pages/AuthPage';
+import AuthModalPage from 'pages/auth/AuthModalPage';
+// C:\Users\bot\Desktop\void\nairabox\movies-dashboard\src\pages\auth
+import AuthPage from 'pages/auth/AuthPage';
 import BadgePage from 'pages/BadgePage';
 import ButtonGroupPage from 'pages/ButtonGroupPage';
 import ButtonPage from 'pages/ButtonPage';
