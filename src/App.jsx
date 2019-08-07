@@ -1,32 +1,17 @@
 import { STATE_LOGIN, STATE_SIGNUP } from 'components/auth/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
-import AlertPage from 'pages/AlertPage';
 import AuthModalPage from 'pages/auth/AuthModalPage';
 // C:\Users\bot\Desktop\void\nairabox\movies-dashboard\src\pages\auth
 import AuthPage from 'pages/auth/AuthPage';
-import BadgePage from 'pages/BadgePage';
-import ButtonGroupPage from 'pages/ButtonGroupPage';
-import ButtonPage from 'pages/ButtonPage';
-import CardPage from 'pages/CardPage';
-import ChartPage from 'pages/ChartPage';
 // pages
-import DashboardPage from 'pages/DashboardPage';
-import DropdownPage from 'pages/DropdownPage';
-import FormPage from 'pages/FormPage';
-import InputGroupPage from 'pages/InputGroupPage';
-import ModalPage from 'pages/ModalPage';
-import ProgressPage from 'pages/ProgressPage';
-import TablePage from 'pages/TablePage';
-import TypographyPage from 'pages/TypographyPage';
-import WidgetPage from 'pages/WidgetPage';
+import DashboardPage from 'pages/dashboard/DashboardPage';
 
 import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-// CINEMA LINKING //
-import CinemaLinking from 'pages/CinemaLinking';
+
 // MOVIE PAGES ||
 import CreateMovie from 'pages/movie/CreateMovie';
 import ListMovies from 'pages/movie/ListMovies';
@@ -51,9 +36,6 @@ import RangeTransactions from 'pages/transaction/RangeTransactions';
 // VOUCHERS
 import CreateVoucher from 'pages/vouchers/CreateVoucher';
 import VoucherBalance from 'pages/vouchers/VoucherBalance';
-
-// ???????
-import HomeBanner from 'pages/HomeBanner';
 
 // PRIVATE ROUTER
 import PrivateRoute from 'components/common/PrivateRoute';
@@ -107,13 +89,6 @@ class App extends React.Component {
                 path="/login-modal"
                 layout={MainLayout}
                 component={AuthModalPage}
-              />
-
-              <LayoutRoute
-                exact
-                path="/cinema-linking"
-                layout={MainLayout}
-                component={CinemaLinking}
               />
 
               <LayoutRoute
@@ -217,42 +192,6 @@ class App extends React.Component {
                 path="/voucher-balance"
                 layout={MainLayout}
                 component={VoucherBalance}
-              />
-              <LayoutRoute
-                exact
-                path="/home-banner"
-                layout={MainLayout}
-                component={HomeBanner}
-              />
-              <LayoutRoute
-                exact
-                path="/progress"
-                layout={MainLayout}
-                component={ProgressPage}
-              />
-              <LayoutRoute
-                exact
-                path="/modals"
-                layout={MainLayout}
-                component={ModalPage}
-              />
-              <LayoutRoute
-                exact
-                path="/forms"
-                layout={MainLayout}
-                component={FormPage}
-              />
-              <LayoutRoute
-                exact
-                path="/input-groups"
-                layout={MainLayout}
-                component={InputGroupPage}
-              />
-              <LayoutRoute
-                exact
-                path="/charts"
-                layout={MainLayout}
-                component={ChartPage}
               />
               <LayoutRoute
                 exact
