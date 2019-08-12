@@ -1,5 +1,5 @@
 import logo200Image from 'assets/img/logo/nairabox-icon.png';
-import sidebarBgImage from 'assets/img/sidebar/sidebar-4.jpg';
+import sidebarBgImage from 'assets/img/driveroo/02.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
 import {
@@ -113,7 +113,7 @@ class Sidebar extends React.Component {
                 className="pr-2"
                 alt=""
               />
-              <span className="text-white">Driveroo Admin</span>
+              <span className="text-white">Driverroo</span>
             </SourceLink>
           </Navbar>
           <Nav vertical>

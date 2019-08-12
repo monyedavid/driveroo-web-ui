@@ -31,7 +31,7 @@ class MainLayout extends React.Component {
 
       this.notificationSystem.addNotification({
         title: <MdImportantDevices />,
-        message: 'Welome to Nairabox Movies!',
+        message: 'Welome to Driverroo Admin Console!',
         level: 'info',
       });
     }, 1500);
@@ -40,13 +40,6 @@ class MainLayout extends React.Component {
       if (!this.notificationSystem) {
         return;
       }
-
-      this.notificationSystem.addNotification({
-        title: <MdLoyalty />,
-        message:
-          'This Nairabox Movies was carefully crafted by the Tech Team at Nairabox!',
-        level: 'info',
-      });
     }, 2500);
   }
 
