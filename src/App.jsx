@@ -2,7 +2,6 @@ import { STATE_LOGIN, STATE_SIGNUP } from 'components/auth/AuthForm';
 import GAListener from 'components/GAListener';
 import { EmptyLayout, LayoutRoute, MainLayout } from 'components/Layout';
 import AuthModalPage from 'pages/auth/AuthModalPage';
-// C:\Users\bot\Desktop\void\nairabox\movies-dashboard\src\pages\auth
 import AuthPage from 'pages/auth/AuthPage';
 // pages
 import DashboardPage from 'pages/dashboard/DashboardPage';

@@ -9,7 +9,7 @@ const Footer = () => {
     <Navbar>
       <Nav navbar>
         <NavItem>
-          Copyright 2019. Powered by <SourceLink>Nairabox</SourceLink>
+          Copyright 2019. Powered by <SourceLink>Diverroo</SourceLink>
         </NavItem>
       </Nav>
     </Navbar>
