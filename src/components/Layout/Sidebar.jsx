@@ -1,4 +1,4 @@
-import logo200Image from 'assets/img/logo/nairabox-icon.png';
+import logo200Image from 'assets/img/driveroo/03.png';
 import sidebarBgImage from 'assets/img/driveroo/02.jpg';
 import SourceLink from 'components/SourceLink';
 import React from 'react';
