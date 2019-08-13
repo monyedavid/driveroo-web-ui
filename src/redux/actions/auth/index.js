@@ -1,9 +1,10 @@
-import { SET_CURRENT_USER } from '../types';
-import { GSAuth } from '../../Graphql/auth.graphql';
+import { SET_CURRENT_USER } from '../../types';
+import { GSAuth } from '../../../Graphql/auth.graphql';
 // Register User
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = ({ emailmobile, password }) => async dispatch => {
   const service = new GSAuth();
   try {
+    await service.login({ emailmobile, password });
   } catch (error) {}
 };
 

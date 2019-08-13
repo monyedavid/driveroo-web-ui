@@ -3,89 +3,88 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
-class AuthForm extends React.Component {
-  get isLogin() {
-    return this.props.page === 'login';
-  }
+function AuthForm(props) {
+  const {
+    showLogo,
+    usernameLabel,
+    usernameInputProps,
+    passwordLabel,
+    passwordInputProps,
+    confirmPasswordLabel,
+    confirmPasswordInputProps,
+    children,
+    onLogoClick,
+    // davids special
+    registerationId,
+    page,
+  } = props;
 
-  get isSignup() {
-    return this.props.page === 'signup';
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    if (this.props.page === 'login') console.log('Doing login avctivty');
-
-    if (this.props.page === 'signup') console.log('Doing signup avctivty');
+  const isLogin = () => {
+    return page === 'login';
   };
 
-  renderButtonText() {
-    if (this.props.page === 'login') return 'Login';
+  const isSignup = () => {
+    return page === 'signup';
+  };
 
-    if (this.props.page === 'signup') return 'SignUp';
-  }
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (page === 'login') console.log('Doing login avctivty');
 
-  render() {
-    const {
-      showLogo,
-      usernameLabel,
-      usernameInputProps,
-      passwordLabel,
-      passwordInputProps,
-      confirmPasswordLabel,
-      confirmPasswordInputProps,
-      children,
-      onLogoClick,
-      registerationId,
-    } = this.props;
-    console.log(registerationId, '| params');
+    if (page === 'signup') console.log('Doing signup avctivty');
+  };
 
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        {showLogo && (
-          <div className="text-center pb-4">
-            <img
-              src={logo200Image}
-              className="rounded"
-              style={{ width: 60, height: 60, cursor: 'pointer' }}
-              alt="logo"
-              onClick={onLogoClick}
-            />
-          </div>
-        )}
+  const renderButtonText = () => {
+    if (page === 'login') return 'Login';
+
+    if (page === 'signup') return 'SignUp';
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      {showLogo && (
+        <div className="text-center pb-4">
+          <img
+            src={logo200Image}
+            className="rounded"
+            style={{ width: 60, height: 60, cursor: 'pointer' }}
+            alt="logo"
+            onClick={onLogoClick}
+          />
+        </div>
+      )}
+      <FormGroup>
+        <Label for={usernameLabel}>{usernameLabel}</Label>
+        <Input {...usernameInputProps} />
+      </FormGroup>
+      <FormGroup>
+        <Label for={passwordLabel}>{passwordLabel}</Label>
+        <Input {...passwordInputProps} />
+      </FormGroup>
+      {isSignup() && (
         <FormGroup>
-          <Label for={usernameLabel}>{usernameLabel}</Label>
-          <Input {...usernameInputProps} />
+          <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
+          <Input {...confirmPasswordInputProps} />
         </FormGroup>
-        <FormGroup>
-          <Label for={passwordLabel}>{passwordLabel}</Label>
-          <Input {...passwordInputProps} />
-        </FormGroup>
-        {this.isSignup && (
-          <FormGroup>
-            <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
-            <Input {...confirmPasswordInputProps} />
-          </FormGroup>
-        )}
-        <FormGroup check>
-          <Label check>
-            <Input type="checkbox" />{' '}
-            {this.isSignup ? 'Agree the terms and policy' : 'Remember me'}
-          </Label>
-        </FormGroup>
-        <hr />
-        <Button
-          size="lg"
-          className="bg-gradient-theme-left border-0"
-          block
-          onClick={this.handleSubmit}
-        >
-          {this.renderButtonText()}
-        </Button>
-        {children}
-      </Form>
-    );
-  }
+      )}
+      <FormGroup check>
+        <Label check>
+          <Input type="checkbox" />{' '}
+          {isSignup() ? 'Agree the terms and policy' : 'Remember me'}
+        </Label>
+      </FormGroup>
+      <hr />
+      <Button
+        size="lg"
+        className="bg-gradient-theme-left border-0"
+        block
+        onClick={handleSubmit}
+      >
+        {renderButtonText()}
+      </Button>
+      {children}
+    </Form>
+  );
 }
 
 export const STATE_LOGIN = 'LOGIN';

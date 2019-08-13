@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthForm from 'components/auth/AuthForm';
+import { registerUser, loginUser } from '../../redux/actions/auth';
 import { Card, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -16,6 +17,10 @@ class AuthPage extends Component {
       this.props.history.push('/dashboard');
     }
     if (this.props.match.params.id) this.setState({ page: 'signup' });
+    if (!this.props.match.params.id) {
+      console.log('time difference');
+      this.setState({ page: 'login' });
+    }
   }
 
   handleAuthState = authState => {
@@ -23,7 +28,7 @@ class AuthPage extends Component {
   };
 
   handleLogoClick = () => {
-    this.props.history.push('/');
+    console.log('clicking logo');
   };
 
   render() {
@@ -41,6 +46,8 @@ class AuthPage extends Component {
               page={this.state.page}
               registerationId={this.props.match.params.id}
               authState={this.props.authState}
+              registerUser={this.props.registerUser}
+              loginUser={this.props.loginUser}
               onChangeAuthState={this.handleAuthState}
               onLogoClick={this.handleLogoClick}
             />
@@ -58,5 +65,5 @@ const map_state_to_props = state => ({
 
 export default connect(
   map_state_to_props,
-  {},
+  { registerUser, loginUser },
 )(AuthPage);
