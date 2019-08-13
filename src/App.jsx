@@ -24,24 +24,16 @@ import RedeemTicket from 'pages/redeem/RedeemTicket';
 import RedeemedTickets from 'pages/redeem/RedeemedTickets';
 // MERCHANTS
 import CreateMerchant from 'pages/merchant/CreateMerchant';
-import ListMerchants from 'pages/merchant/ListMerchants';
-import UpdateMerchants from 'pages/merchant/UpdateMerchant';
 
 // TRANSACTIONS ACTIVITY
 import DailyTransactions from 'pages/transaction/DailyTransactions';
 import WeeklyTransactions from 'pages/transaction/WeeklyTransactions';
 import MonthlyTransactions from 'pages/transaction/MonthlyTransactions';
 import RangeTransactions from 'pages/transaction/RangeTransactions';
-// VOUCHERS
-import CreateVoucher from 'pages/vouchers/CreateVoucher';
-import VoucherBalance from 'pages/vouchers/VoucherBalance';
 
 // PRIVATE ROUTER
 // import PrivateRoute from 'components/common/PrivateRoute';
-import {
-  check_token_storage,
-  expired_token_logout,
-} from 'utils/auth/checkTokenStorage';
+import { check_token_storage } from 'utils/auth/checkTokenStorage';
 
 // REDUX
 import { Provider } from 'react-redux';
@@ -49,7 +41,6 @@ import store from 'redux/store';
 
 // Check for token and set user
 check_token_storage();
-expired_token_logout();
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
