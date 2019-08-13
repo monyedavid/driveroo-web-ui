@@ -37,7 +37,7 @@ import CreateVoucher from 'pages/vouchers/CreateVoucher';
 import VoucherBalance from 'pages/vouchers/VoucherBalance';
 
 // PRIVATE ROUTER
-import PrivateRoute from 'components/common/PrivateRoute';
+// import PrivateRoute from 'components/common/PrivateRoute';
 import {
   check_token_storage,
   expired_token_logout,
@@ -69,25 +69,11 @@ class App extends React.Component {
             <Switch>
               <LayoutRoute
                 exact
-                path="/"
+                path="/auth/:id?"
                 layout={EmptyLayout}
                 component={props => (
                   <AuthPage {...props} authState={STATE_LOGIN} />
                 )}
-              />
-              <LayoutRoute
-                exact
-                path="/signup"
-                layout={EmptyLayout}
-                component={props => (
-                  <AuthPage {...props} authState={STATE_SIGNUP} />
-                )}
-              />
-              <LayoutRoute
-                exact
-                path="/login-modal"
-                layout={MainLayout}
-                component={AuthModalPage}
               />
 
               <LayoutRoute
@@ -146,18 +132,6 @@ class App extends React.Component {
               />
               <LayoutRoute
                 exact
-                path="/list-merchants"
-                layout={MainLayout}
-                component={ListMerchants}
-              />
-              <LayoutRoute
-                exact
-                path="/update-merchant/:_id"
-                layout={MainLayout}
-                component={UpdateMerchants}
-              />
-              <LayoutRoute
-                exact
                 path="/daily-transactions"
                 layout={MainLayout}
                 component={DailyTransactions}
@@ -180,25 +154,8 @@ class App extends React.Component {
                 layout={MainLayout}
                 component={RangeTransactions}
               />
-              <LayoutRoute
-                exact
-                path="/create-voucher"
-                layout={MainLayout}
-                component={CreateVoucher}
-              />
-              <LayoutRoute
-                exact
-                path="/voucher-balance"
-                layout={MainLayout}
-                component={VoucherBalance}
-              />
-              <LayoutRoute
-                exact
-                path="/register"
-                layout={MainLayout}
-                component={AuthPage}
-              />
-              <Redirect to="/" />
+
+              <Redirect to="/auth" />
             </Switch>
           </GAListener>
         </BrowserRouter>

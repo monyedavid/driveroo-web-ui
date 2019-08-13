@@ -1,40 +1,28 @@
-import logo200Image from 'assets/img/logo/logo_200.png';
+import logo200Image from 'assets/img/driveroo/03.png';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 class AuthForm extends React.Component {
   get isLogin() {
-    return this.props.authState === STATE_LOGIN;
+    return this.props.page === 'login';
   }
 
   get isSignup() {
-    return this.props.authState === STATE_SIGNUP;
+    return this.props.page === 'signup';
   }
-
-  changeAuthState = authState => event => {
-    event.preventDefault();
-
-    this.props.onChangeAuthState(authState);
-  };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onChangeAuthState();
+    if (this.props.page === 'login') console.log('Doing login avctivty');
+
+    if (this.props.page === 'signup') console.log('Doing signup avctivty');
   };
 
   renderButtonText() {
-    const { buttonText } = this.props;
+    if (this.props.page === 'login') return 'Login';
 
-    if (!buttonText && this.isLogin) {
-      return 'Login';
-    }
-
-    if (!buttonText && this.isSignup) {
-      return 'Signup';
-    }
-
-    return buttonText;
+    if (this.props.page === 'signup') return 'SignUp';
   }
 
   render() {
@@ -48,7 +36,9 @@ class AuthForm extends React.Component {
       confirmPasswordInputProps,
       children,
       onLogoClick,
+      registerationId,
     } = this.props;
+    console.log(registerationId, '| params');
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -92,22 +82,6 @@ class AuthForm extends React.Component {
         >
           {this.renderButtonText()}
         </Button>
-
-        <div className="text-center pt-1">
-          <h6>or</h6>
-          <h6>
-            {this.isSignup ? (
-              <a href="#login" onClick={this.changeAuthState(STATE_LOGIN)}>
-                Login
-              </a>
-            ) : (
-              <a href="#signup" onClick={this.changeAuthState(STATE_SIGNUP)}>
-                Signup
-              </a>
-            )}
-          </h6>
-        </div>
-
         {children}
       </Form>
     );
