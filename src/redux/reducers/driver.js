@@ -1,7 +1,7 @@
-import { GET_DRIVERS, GET_DRIVER } from '../types';
+import { GET_DRIVERS, GET_DRIVER, TOGGLE_DRIVER_LOADING } from '../types';
 
 const initialState = {
-  loading: true,
+  loading: false,
   driver: null,
   drivers: [],
 };
@@ -12,12 +12,19 @@ export default function(state = initialState, action) {
       return {
         ...state,
         drivers: action.payload,
+        loading: false,
       };
 
     case GET_DRIVER:
       return {
         ...state,
         driver: action.payload,
+      };
+
+    case TOGGLE_DRIVER_LOADING:
+      return {
+        ...state,
+        loading: !state.loading,
       };
 
     // default

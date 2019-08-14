@@ -1,7 +1,8 @@
 import { GSDriver } from '../../../Graphql/driver.graphql';
-import { GET_ERRORS, GET_DRIVERS } from '../../types';
+import { GET_ERRORS, GET_DRIVERS, TOGGLE_DRIVER_LOADING } from '../../types';
 
 export const allDrivers = token => async dispatch => {
+  dispatch(driverLoad());
   const service = new GSDriver(token);
   let result;
   try {
@@ -27,4 +28,10 @@ export const allDrivers = token => async dispatch => {
       payload: 'A network error occured please try again later',
     });
   }
+};
+
+const driverLoad = () => {
+  return {
+    type: TOGGLE_DRIVER_LOADING,
+  };
 };
