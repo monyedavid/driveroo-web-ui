@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import NotificationSystem from 'react-notification-system';
+import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
+import { MdAnnouncement } from 'react-icons/md';
 import logo200Image from 'assets/img/driveroo/03.png';
 import PropTypes from 'prop-types';
 
@@ -54,6 +57,13 @@ function AuthForm(props) {
         confirm,
       );
       // decode address
+
+      if (password !== confirm)
+        this.notificationSystem.addNotification({
+          title: <MdAnnouncement />,
+          message: 'Welome to Driverroo Admin Console!',
+          level: 'info',
+        });
 
       if (password === confirm) {
         registerUser({ firstName, lastName, password, registerationId });
@@ -154,6 +164,14 @@ function AuthForm(props) {
         {renderButtonText()}
       </Button>
       {children}
+
+      <NotificationSystem
+        dismissible={false}
+        ref={notificationSystem =>
+          (this.notificationSystem = notificationSystem)
+        }
+        style={NOTIFICATION_SYSTEM_STYLE}
+      />
     </Form>
   );
 }
