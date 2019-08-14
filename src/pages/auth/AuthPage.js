@@ -40,6 +40,7 @@ class AuthPage extends Component {
       loginUser,
       authState,
       clearErrors,
+      location,
     } = this.props;
 
     return (
@@ -62,6 +63,7 @@ class AuthPage extends Component {
               clearErrors={clearErrors}
               onChangeAuthState={this.handleAuthState}
               onLogoClick={this.handleLogoClick}
+              location={location}
             />
           </Card>
         </Col>

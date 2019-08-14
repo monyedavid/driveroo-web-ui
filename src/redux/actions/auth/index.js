@@ -2,7 +2,10 @@ import { SET_CURRENT_USER, GET_ERRORS } from '../../types';
 import { GSAuth } from '../../../Graphql/auth.graphql';
 // Register User
 const service = new GSAuth();
-export const loginUser = ({ emailmobile, password }) => async dispatch => {
+export const loginUser = (
+  { emailmobile, password },
+  location,
+) => async dispatch => {
   let result;
   try {
     result = await service.login({ emailmobile, password });
@@ -20,6 +23,7 @@ export const loginUser = ({ emailmobile, password }) => async dispatch => {
       });
     }
 
+    console.log(result.data.login);
     if (!result.data.login[0].path) {
       console.log(result.data.login[0]);
       // get current user || redirect to dashboard

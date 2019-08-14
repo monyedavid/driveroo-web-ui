@@ -11,13 +11,13 @@ export class GSAuth {
     };
   }
 
-  async login(email, password) {
+  async login(emailmobile, password) {
     return rp.post(this.url, {
       ...this.options,
       body: {
         query: `
         mutation {
-          login(emailormobile: "${email}", password: "${password}",  model: "admin") {
+          login(emailormobile: "${emailmobile}", password: "${password}",  model: "admin") {
             path
             message
             model

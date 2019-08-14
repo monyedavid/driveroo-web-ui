@@ -26,6 +26,7 @@ function AuthForm(props) {
     clearErrors,
     // davids special
     registerationId,
+    location,
     page,
   } = props;
 
@@ -60,7 +61,7 @@ function AuthForm(props) {
     event.preventDefault();
     if (page === 'login') {
       clearErrors();
-      loginUser({ username, password });
+      loginUser({ emailmobile: username, password }, location);
     }
 
     if (page === 'signup') {
@@ -218,7 +219,7 @@ AuthForm.defaultProps = {
   usernameLabel: 'Email or Phone Number',
   usernameInputProps: {
     type: 'email',
-    placeholder: 'your@email.com or +X 000',
+    placeholder: 'your@email.com or number',
   },
   passwordLabel: 'Password',
   firstNameLabel: 'First Name',
