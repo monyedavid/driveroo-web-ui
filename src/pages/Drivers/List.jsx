@@ -9,27 +9,24 @@ import TicketItem from '../../components/common/List/MovieItem';
 import { getMoviesTickets } from '../../redux/actions/movies';
 
 class ListMovies extends Component {
-  componentDidMount() {
-    const { getMoviesTickets } = this.props;
-    getMoviesTickets();
-  }
+  componentDidMount() {}
 
   render() {
     const {
-      mt: { loading, movieTickets },
+      driver: { loading, driver },
     } = this.props;
 
     let list_movieTicket_items;
 
-    loading === true && movieTickets == null
+    loading === true && driver == null
       ? (list_movieTicket_items = <React.Fragment />)
-      : loading === false && movieTickets == null
+      : loading === false && driver == null
       ? (list_movieTicket_items = <React.Fragment />)
-      : movieTickets.AllTickets.length > 0
-      ? (list_movieTicket_items = movieTickets.AllTickets.map(mt => (
+      : driver.AllTickets.length > 0
+      ? (list_movieTicket_items = driver.AllTickets.map(driver => (
           <TicketItem
-            key={mt._id}
-            ticketDetails={mt}
+            key={driver._id}
+            ticketDetails={driver}
             history={this.props.history}
           />
         )))
@@ -84,7 +81,7 @@ class ListMovies extends Component {
 }
 
 const map_state_to_props = state => ({
-  mt: state.movieTickets,
+  driver: state.driver,
 });
 
 export default connect(
