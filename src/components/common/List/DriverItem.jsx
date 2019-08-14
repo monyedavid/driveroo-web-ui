@@ -3,12 +3,12 @@ import { Button } from 'reactstrap';
 // import classnames from 'classnames';
 // import PropTypes from 'prop-types';
 
-export default function TicketItem({ dd, history, i }) {
+export default function TicketItem({ dd, history, index, setDriver }) {
   return (
     <React.Fragment>
       <tbody>
         <tr>
-          <th scope="row">{i}</th>
+          <th scope="row">{index}</th>
           <td>{dd.avatar}</td>
           <td>{`${dd.firstName} ${dd.lastName}`}</td>
           <td>{dd.email}</td>
@@ -37,6 +37,18 @@ export default function TicketItem({ dd, history, i }) {
               active
             >
               VIEW PTSD ADDRESS
+            </Button>
+          </td>
+          <td>
+            <Button
+              color="secondary"
+              onClick={() => {
+                setDriver({ index, activity: 'details' });
+              }}
+              size="lg"
+              active
+            >
+              DRIVER DETAILS
             </Button>
           </td>
         </tr>

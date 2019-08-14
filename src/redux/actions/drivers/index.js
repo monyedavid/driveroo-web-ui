@@ -1,5 +1,10 @@
 import { GSDriver } from '../../../Graphql/driver.graphql';
-import { GET_ERRORS, GET_DRIVERS, TOGGLE_DRIVER_LOADING } from '../../types';
+import {
+  GET_ERRORS,
+  GET_DRIVERS,
+  TOGGLE_DRIVER_LOADING,
+  GET_DRIVER,
+} from '../../types';
 
 export const allDrivers = token => async dispatch => {
   dispatch(driverLoad());
@@ -33,5 +38,12 @@ export const allDrivers = token => async dispatch => {
 const driverLoad = () => {
   return {
     type: TOGGLE_DRIVER_LOADING,
+  };
+};
+
+export const setDriver = ({ index, activity }) => {
+  return {
+    type: GET_DRIVER,
+    payload: { index, activity },
   };
 };
