@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthForm from 'components/auth/AuthForm';
-import { registerUser, loginUser } from '../../redux/actions/auth';
+import { regUser, loginUser } from '../../redux/actions/auth';
 import { Card, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -46,7 +46,7 @@ class AuthPage extends Component {
               page={this.state.page}
               registerationId={this.props.match.params.id}
               authState={this.props.authState}
-              registerUser={this.props.registerUser}
+              registerUser={this.props.regUser}
               loginUser={this.props.loginUser}
               onChangeAuthState={this.handleAuthState}
               onLogoClick={this.handleLogoClick}
@@ -65,5 +65,5 @@ const map_state_to_props = state => ({
 
 export default connect(
   map_state_to_props,
-  { registerUser, loginUser },
+  { regUser, loginUser },
 )(AuthPage);
