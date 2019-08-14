@@ -3,7 +3,7 @@ import config from './config';
 
 export class GSAuth {
   constructor(url, session) {
-    this.url = 'http://localhost:4000/'; //url ? url : config.ams;
+    this.url = config.ams; //url ? url : config.ams;
     this.options = {
       withCredentials: true,
       json: true,

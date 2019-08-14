@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from '../../types';
+import { SET_CURRENT_USER, GET_ERRORS } from '../../types';
 import { GSAuth } from '../../../Graphql/auth.graphql';
 // Register User
 const service = new GSAuth();
@@ -7,9 +7,20 @@ export const loginUser = ({ emailmobile, password }) => async dispatch => {
   try {
     result = await service.login({ emailmobile, password });
   } catch (error) {
-    console.log(error, '| error');
+    dispatch({
+      type: 'NETWORK',
+      payload: 'A network error occured please try again later',
+    });
   }
   console.log(result, 'result');
+  if (result.data) {
+    if (result.data.login[0].path) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: result.data.login[0],
+      });
+    }
+  }
 };
 
 // Login - Get User Token
