@@ -95,4 +95,28 @@ export class GSAuth {
       },
     });
   }
+
+  async admin_link({ registerationId, firstName, lastName, password }) {
+    return rp.post(this.url, {
+      ...this.options,
+      body: {
+        query: `
+          mutation {
+            admin_link_register(
+              params: {
+                encrypt_id: "${registerationId}",
+                password: "${password}",
+                firstName: "${firstName}",
+                lastName: "${lastName}"
+              }
+            ) {
+              ok
+              path
+              message
+            }
+          }
+            `,
+      },
+    });
+  }
 }

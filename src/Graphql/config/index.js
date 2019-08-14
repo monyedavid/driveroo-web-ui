@@ -1,4 +1,4 @@
 export default {
-  ams: 'https://driveroo-driver-ms.herokuapp.com',
-  dms: 'https://driveroo-auth-ms.herokuapp.com',
+  dms: 'https://driveroo-driver-ms.herokuapp.com',
+  ams: 'https://driveroo-auth-ms.herokuapp.com',
 };

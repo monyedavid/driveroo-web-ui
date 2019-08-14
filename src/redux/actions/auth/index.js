@@ -1,15 +1,22 @@
 import { SET_CURRENT_USER } from '../../types';
 import { GSAuth } from '../../../Graphql/auth.graphql';
 // Register User
-export const registerUser = ({ emailmobile, password }) => async dispatch => {
-  const service = new GSAuth();
+const service = new GSAuth();
+export const loginUser = ({ emailmobile, password }) => async dispatch => {
   try {
     await service.login({ emailmobile, password });
   } catch (error) {}
 };
 
 // Login - Get User Token
-export const loginUser = userData => dispatch => {};
+export const regUser = userData => async dispatch => {
+  let result;
+  try {
+    result = await service.admin_link({ ...userData });
+  } catch (error) {
+    console.log('err |', error);
+  }
+};
 
 // Set Logged in User
 export const set_current_user = userData => {

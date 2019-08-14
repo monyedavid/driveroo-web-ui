@@ -16,10 +16,10 @@ function AuthForm(props) {
     onLogoClick,
     firstNameLabel,
     lastNameLabel,
-    // registerUser,
+    registerUser,
     // loginUser,
     // davids special
-    //  registerationId,
+    registerationId,
     page,
   } = props;
 
@@ -53,6 +53,11 @@ function AuthForm(props) {
         password,
         confirm,
       );
+      // decode address
+
+      if (password === confirm) {
+        registerUser({ firstName, lastName, password, registerationId });
+      }
     }
   };
 
