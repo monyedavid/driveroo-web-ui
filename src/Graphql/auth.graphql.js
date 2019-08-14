@@ -3,7 +3,7 @@ import config from './config';
 
 export class GSAuth {
   constructor(url, session) {
-    this.url = config.ams; //url ? url : config.ams;
+    this.url = 'http://localhost:4000'; // config.ams; //url ? url : config.ams;
     this.options = {
       withCredentials: true,
       json: true,
@@ -11,7 +11,7 @@ export class GSAuth {
     };
   }
 
-  async login(emailmobile, password) {
+  async login({ emailmobile, password }) {
     return rp.post(this.url, {
       ...this.options,
       body: {
