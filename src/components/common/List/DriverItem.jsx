@@ -33,12 +33,12 @@ export default class TicketItem extends Component {
               <Button
                 color="secondary"
                 onClick={() => {
-                  history.push(addShowtimeLink);
+                  console.log('view Primary secondary Addresse');
                 }}
                 size="lg"
                 active
               >
-                Add Showtime
+                VIEW PTSD ADDRESS
               </Button>
             </td>
           </tr>

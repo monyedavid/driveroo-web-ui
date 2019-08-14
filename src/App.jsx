@@ -10,8 +10,7 @@ import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import ListDrivers from 'pages/Drivers/List';
-
-// import PrivateRoute from 'components/common/PrivateRoute';
+import PrivateRoute from 'components/common/PrivateRoute';
 // import { checksessionSetUser } from 'utils/auth/checkSession';
 
 // REDUX
@@ -45,7 +44,6 @@ class App extends React.Component {
                   <AuthPage {...props} authState={STATE_LOGIN} />
                 )}
               />
-
               <LayoutRoute
                 exact
                 path="/dashboard"
