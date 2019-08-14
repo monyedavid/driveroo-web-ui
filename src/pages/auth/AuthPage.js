@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthForm from 'components/auth/AuthForm';
 import { regUser, loginUser } from '../../redux/actions/auth';
+import { clearErrors } from 'redux/actions/shared';
 import { Card, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -32,6 +33,15 @@ class AuthPage extends Component {
   };
 
   render() {
+    const {
+      match,
+      errors,
+      regUser,
+      loginUser,
+      authState,
+      clearErrors,
+    } = this.props;
+
     return (
       <Row
         style={{
@@ -44,11 +54,12 @@ class AuthPage extends Component {
           <Card body>
             <AuthForm
               page={this.state.page}
-              registerationId={this.props.match.params.id}
-              authState={this.props.authState}
-              errors={this.props.errors}
-              registerUser={this.props.regUser}
-              loginUser={this.props.loginUser}
+              registerationId={match.params.id}
+              authState={authState}
+              errors={errors}
+              registerUser={regUser}
+              loginUser={loginUser}
+              clearErrors={clearErrors}
               onChangeAuthState={this.handleAuthState}
               onLogoClick={this.handleLogoClick}
             />
@@ -61,10 +72,10 @@ class AuthPage extends Component {
 
 const map_state_to_props = state => ({
   auth: state.auth,
-  erors: state.errors,
+  errors: state.errors,
 });
 
 export default connect(
   map_state_to_props,
-  { regUser, loginUser },
+  { regUser, loginUser, clearErrors },
 )(AuthPage);

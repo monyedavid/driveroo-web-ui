@@ -16,7 +16,7 @@ export const loginUser = ({ emailmobile, password }) => async dispatch => {
     if (result.data.login[0].path) {
       dispatch({
         type: GET_ERRORS,
-        payload: result.data.login[0],
+        payload: result.data.login,
       });
     }
 

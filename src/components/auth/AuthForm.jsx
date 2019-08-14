@@ -5,6 +5,7 @@ import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
 import { MdAnnouncement } from 'react-icons/md';
 import logo200Image from 'assets/img/driveroo/03.png';
 import PropTypes from 'prop-types';
+import isEmpty from 'validaton/is-empty';
 
 function AuthForm(props) {
   const {
@@ -22,6 +23,7 @@ function AuthForm(props) {
     registerUser,
     loginUser,
     errors,
+    clearErrors,
     // davids special
     registerationId,
     page,
@@ -44,12 +46,20 @@ function AuthForm(props) {
   };
 
   React.useEffect(() => {
-    console.log('Only errors change| determine change');
-  }, [errors]);
+    if (!isEmpty(errors))
+      errors.forEach(err => {
+        ns.addNotification({
+          title: <MdAnnouncement />,
+          message: err.message,
+          level: 'error',
+        });
+      });
+  }, [errors, ns]);
 
   const handleSubmit = event => {
     event.preventDefault();
     if (page === 'login') {
+      clearErrors();
       loginUser({ username, password });
     }
 
