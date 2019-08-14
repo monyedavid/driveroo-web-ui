@@ -85,5 +85,4 @@ export const set_current_user = userData => {
 };
 
 // Log user out
-
 export const logout_user = () => dispatch => {};
