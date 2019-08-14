@@ -33,6 +33,7 @@ function AuthForm(props) {
   const [confirm, setconfirm] = React.useState('');
   const [firstName, setfirstName] = React.useState('');
   const [lastName, setlastName] = React.useState('');
+  let ns;
 
   const isLogin = () => {
     return page === 'login';
@@ -59,10 +60,10 @@ function AuthForm(props) {
       // decode address
 
       if (password !== confirm)
-        this.notificationSystem.addNotification({
+        ns.addNotification({
           title: <MdAnnouncement />,
-          message: 'Welome to Driverroo Admin Console!',
-          level: 'info',
+          message: 'PASSWORD MISMATCH PLEASE TRY AGAIN',
+          level: 'error',
         });
 
       if (password === confirm) {
@@ -75,6 +76,20 @@ function AuthForm(props) {
     if (page === 'login') return 'Login';
 
     if (page === 'signup') return 'SignUp';
+  };
+
+  const disableButton = () => {
+    if (isLogin) {
+      if (username === '' || password === '') return true;
+      return false;
+    }
+
+    if (isSignup) {
+      if (firstName === '' || lastName === '' || password === '') return true;
+      return false;
+    }
+
+    return false;
   };
 
   return (
@@ -157,6 +172,7 @@ function AuthForm(props) {
       <hr />
       <Button
         size="lg"
+        disabled={disableButton()}
         className="bg-gradient-theme-left border-0"
         block
         onClick={handleSubmit}
@@ -167,9 +183,7 @@ function AuthForm(props) {
 
       <NotificationSystem
         dismissible={false}
-        ref={notificationSystem =>
-          (this.notificationSystem = notificationSystem)
-        }
+        ref={notificationSystem => (ns = notificationSystem)}
         style={NOTIFICATION_SYSTEM_STYLE}
       />
     </Form>

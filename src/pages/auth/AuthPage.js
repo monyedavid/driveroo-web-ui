@@ -46,6 +46,7 @@ class AuthPage extends Component {
               page={this.state.page}
               registerationId={this.props.match.params.id}
               authState={this.props.authState}
+              errors={this.props.errors}
               registerUser={this.props.regUser}
               loginUser={this.props.loginUser}
               onChangeAuthState={this.handleAuthState}
