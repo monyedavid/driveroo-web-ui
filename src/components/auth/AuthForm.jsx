@@ -24,9 +24,10 @@ function AuthForm(props) {
     loginUser,
     errors,
     clearErrors,
+    me,
     // davids special
     registerationId,
-    location,
+    history,
     page,
   } = props;
 
@@ -47,6 +48,14 @@ function AuthForm(props) {
   };
 
   React.useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = () => {
+    me(history);
+  };
+
+  React.useEffect(() => {
     if (!isEmpty(errors))
       errors.forEach(err => {
         ns.addNotification({
@@ -61,7 +70,7 @@ function AuthForm(props) {
     event.preventDefault();
     if (page === 'login') {
       clearErrors();
-      loginUser({ emailmobile: username, password }, location);
+      loginUser({ emailmobile: username, password }, history);
     }
 
     if (page === 'signup') {
