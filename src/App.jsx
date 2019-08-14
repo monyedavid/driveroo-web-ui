@@ -32,7 +32,7 @@ import RangeTransactions from 'pages/transaction/RangeTransactions';
 
 // PRIVATE ROUTER
 // import PrivateRoute from 'components/common/PrivateRoute';
-import { checksessionSetUser } from 'utils/auth/checkTokenStorage';
+import { checksessionSetUser } from 'utils/auth/checkSession';
 
 // REDUX
 import { Provider } from 'react-redux';
