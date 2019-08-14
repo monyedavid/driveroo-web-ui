@@ -25,10 +25,10 @@ const sidebarBackground = {
   backgroundRepeat: 'no-repeat',
 };
 
-const navMovies = [
+const driverrooDrivers = [
   {
-    to: '/list-movies',
-    name: 'list movies',
+    to: '/list-drivers',
+    name: 'Drivers',
     exact: false,
     Icon: MdViewCarousel,
   },
@@ -121,7 +121,7 @@ class Sidebar extends React.Component {
               </BSNavLink>
             </NavItem>
             <Collapse isOpen={this.state.isOpenMovies}>
-              {navMovies.map(({ to, name, exact, Icon }, index) => (
+              {driverrooDrivers.map(({ to, name, exact, Icon }, index) => (
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}

@@ -9,7 +9,7 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-import ListMovies from 'pages/Drivers/List';
+import ListDrivers from 'pages/Drivers/List';
 
 // import PrivateRoute from 'components/common/PrivateRoute';
 // import { checksessionSetUser } from 'utils/auth/checkSession';
@@ -54,9 +54,9 @@ class App extends React.Component {
               />
               <LayoutRoute
                 exact
-                path="/list-movies"
+                path="/list-drivers"
                 layout={MainLayout}
-                component={ListMovies}
+                component={ListDrivers}
               />
 
               <Redirect to="/auth" />

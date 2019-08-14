@@ -33,10 +33,7 @@ class ListMovies extends Component {
       : (list_movieTicket_items = <h4>No Movie Tickets Where Found!</h4>);
 
     return (
-      <Page
-        title="List Movies"
-        breadcrumbs={[{ name: 'List Movies', active: true }]}
-      >
+      <Page title="Drivers" breadcrumbs={[{ name: 'Drivers', active: true }]}>
         <Row>
           <Col xl={12} lg={12} md={12}>
             <Card>
