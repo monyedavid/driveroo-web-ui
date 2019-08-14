@@ -1,7 +1,7 @@
-import logo200Image from 'assets/img/driveroo/03.png';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import logo200Image from 'assets/img/driveroo/03.png';
+import PropTypes from 'prop-types';
 
 function AuthForm(props) {
   const {
@@ -14,10 +14,20 @@ function AuthForm(props) {
     confirmPasswordInputProps,
     children,
     onLogoClick,
+    firstNameLabel,
+    lastNameLabel,
     // davids special
-    registerationId,
+    //  registerationId,
     page,
   } = props;
+
+  // LOGIN STATE
+  const [username, setusername] = React.useState('');
+  const [password, setpassword] = React.useState('');
+
+  const [confirm, setconfirm] = React.useState('');
+  const [firstName, setfirstName] = React.useState('');
+  const [lastName, setlastName] = React.useState('');
 
   const isLogin = () => {
     return page === 'login';
@@ -29,9 +39,19 @@ function AuthForm(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (page === 'login') console.log('Doing login avctivty');
+    if (page === 'login') {
+      console.log('Doing login avctivty', username, password);
+    }
 
-    if (page === 'signup') console.log('Doing signup avctivty');
+    if (page === 'signup') {
+      console.log(
+        'Doing signup avctivty',
+        firstName,
+        lastName,
+        password,
+        confirm,
+      );
+    }
   };
 
   const renderButtonText = () => {
@@ -53,18 +73,62 @@ function AuthForm(props) {
           />
         </div>
       )}
-      <FormGroup>
-        <Label for={usernameLabel}>{usernameLabel}</Label>
-        <Input {...usernameInputProps} />
-      </FormGroup>
+      {isSignup() && (
+        <FormGroup>
+          <Label for={firstNameLabel}>{firstNameLabel}</Label>
+          <Input
+            name={'firstname'}
+            onChange={e => {
+              setfirstName(e.target.value);
+            }}
+          />
+        </FormGroup>
+      )}
+      {isSignup() && (
+        <FormGroup>
+          <Label for={lastNameLabel}>{lastNameLabel}</Label>
+          <Input
+            name={'lastname'}
+            onChange={e => {
+              setlastName(e.target.value);
+            }}
+          />
+        </FormGroup>
+      )}
+
+      {isLogin() && (
+        <FormGroup>
+          <Label for={usernameLabel}>{usernameLabel}</Label>
+          <Input
+            name={'username'}
+            onChange={e => {
+              setusername(e.target.value);
+            }}
+            {...usernameInputProps}
+          />
+        </FormGroup>
+      )}
+
       <FormGroup>
         <Label for={passwordLabel}>{passwordLabel}</Label>
-        <Input {...passwordInputProps} />
+        <Input
+          name={'password'}
+          onChange={e => {
+            setpassword(e.target.value);
+          }}
+          {...passwordInputProps}
+        />
       </FormGroup>
       {isSignup() && (
         <FormGroup>
           <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
-          <Input {...confirmPasswordInputProps} />
+          <Input
+            name={'confirmpassword'}
+            onChange={e => {
+              setconfirm(e.target.value);
+            }}
+            {...confirmPasswordInputProps}
+          />
         </FormGroup>
       )}
       <FormGroup check>
@@ -94,6 +158,8 @@ AuthForm.propTypes = {
   authState: PropTypes.oneOf([STATE_LOGIN, STATE_SIGNUP]).isRequired,
   showLogo: PropTypes.bool,
   usernameLabel: PropTypes.string,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
   usernameInputProps: PropTypes.object,
   passwordLabel: PropTypes.string,
   passwordInputProps: PropTypes.object,
@@ -111,13 +177,14 @@ AuthForm.defaultProps = {
     placeholder: 'your@email.com',
   },
   passwordLabel: 'Password',
+  firstNameLabel: 'First Name',
+  lastNameLabel: 'Last Name',
   passwordInputProps: {
     type: 'password',
     placeholder: 'your password',
   },
   confirmPasswordLabel: 'Confirm Password',
   confirmPasswordInputProps: {
-    type: 'password',
     placeholder: 'confirm your password',
   },
   onLogoClick: () => {},
