@@ -37,8 +37,13 @@ export const me = history => async dispatch => {
     result = await service.me();
   } catch (error) {
     dispatch({
-      type: 'NETWORK',
-      payload: 'A network error occured please try again later',
+      type: GET_ERRORS,
+      payload: [
+        {
+          path: 'Network',
+          message: "'A network error occured please try again later'",
+        },
+      ],
     });
     return;
   }
@@ -49,7 +54,7 @@ export const me = history => async dispatch => {
         if (result.data.me.__typename === 'Error') {
           dispatch({
             type: GET_ERRORS,
-            payload: result.data.me,
+            payload: [result.data.me],
           });
         }
 

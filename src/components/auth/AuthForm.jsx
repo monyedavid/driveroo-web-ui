@@ -56,6 +56,7 @@ function AuthForm(props) {
   };
 
   React.useEffect(() => {
+    console.log(errors);
     if (!isEmpty(errors))
       errors.forEach(err => {
         ns.addNotification({
