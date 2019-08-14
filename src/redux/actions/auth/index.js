@@ -12,13 +12,43 @@ export const loginUser = ({ emailmobile, password }) => async dispatch => {
       payload: 'A network error occured please try again later',
     });
   }
-  console.log(result, 'result');
   if (result.data) {
     if (result.data.login[0].path) {
       dispatch({
         type: GET_ERRORS,
         payload: result.data.login[0],
       });
+    }
+
+    if (!result.data.login[0].path) {
+      console.log(result.data.login[0]);
+      // get current user || redirect to dashboard
+    }
+  }
+};
+
+export const me = () => async dispatch => {
+  let result;
+  try {
+    result = await service.me();
+  } catch (error) {
+    dispatch({
+      type: 'NETWORK',
+      payload: 'A network error occured please try again later',
+    });
+  }
+
+  if (result.data) {
+    if (result.data.login[0].path) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: result.data.login[0],
+      });
+    }
+
+    if (!result.data.login[0].path) {
+      // get current user || redirect to dashboard
+      dispatch(set_current_user(result.data.login[0]));
     }
   }
 };

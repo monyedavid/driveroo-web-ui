@@ -21,6 +21,7 @@ function AuthForm(props) {
     lastNameLabel,
     registerUser,
     loginUser,
+    errors,
     // davids special
     registerationId,
     page,
@@ -34,7 +35,6 @@ function AuthForm(props) {
   const [firstName, setfirstName] = React.useState('');
   const [lastName, setlastName] = React.useState('');
   let ns;
-
   const isLogin = () => {
     return page === 'login';
   };
@@ -43,23 +43,17 @@ function AuthForm(props) {
     return page === 'signup';
   };
 
+  React.useEffect(() => {
+    console.log('Only errors change| determine change');
+  }, [errors]);
+
   const handleSubmit = event => {
     event.preventDefault();
     if (page === 'login') {
       loginUser({ username, password });
-      console.log('Doing login avctivty', username, password);
     }
 
     if (page === 'signup') {
-      console.log(
-        'Doing signup avctivty',
-        firstName,
-        lastName,
-        password,
-        confirm,
-      );
-      // decode address
-
       if (password !== confirm)
         ns.addNotification({
           title: <MdAnnouncement />,
