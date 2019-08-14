@@ -1,5 +1,6 @@
 import { Content, Footer, Header, Sidebar } from 'components/Layout';
 import React from 'react';
+import { connect } from 'react-redux';
 import { MdImportantDevices } from 'react-icons/md';
 import NotificationSystem from 'react-notification-system';
 import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
@@ -18,6 +19,10 @@ class MainLayout extends React.Component {
   }
 
   componentDidMount() {
+    const { auth, history } = this.props;
+    if (!auth.isAuthenticated) {
+      console.log('No Auth');
+    }
     this.checkBreakpoint(this.props.breakpoint);
 
     setTimeout(() => {
@@ -25,11 +30,18 @@ class MainLayout extends React.Component {
         return;
       }
 
-      this.notificationSystem.addNotification({
-        title: <MdImportantDevices />,
-        message: 'Welome to Driverroo Admin Console!',
-        level: 'info',
-      });
+      this.notificationSystem.addNotification(
+        {
+          title: <MdImportantDevices />,
+          message: 'Welome to Driverroo Admin Console!',
+          level: 'info',
+        },
+        // {
+        //   title: <MdImportantDevices />,
+        //   message: `Hi ${auth.user.user.firstName}`,
+        //   level: 'info',
+        // },
+      );
     }, 1500);
 
     setTimeout(() => {
@@ -98,4 +110,11 @@ class MainLayout extends React.Component {
   }
 }
 
-export default MainLayout;
+const map_state_to_props = state => ({
+  auth: state.auth,
+});
+
+export default connect(
+  map_state_to_props,
+  {},
+)(MainLayout);

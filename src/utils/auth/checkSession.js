@@ -11,26 +11,32 @@ export const checksessionSetUser = () => {
     try {
       result = await new GSAuth().me();
     } catch (err) {
-      console.log(err);
+      store.dispatch({
+        type: GET_ERRORS,
+        payload: [
+          { path: 'Network', message: 'Please check your internet connection' },
+        ],
+      });
     }
+
+    console.log(result, 'from | check session auth');
+    if (result)
+      if (result.data) {
+        if (result.data.me)
+          if (result.data.me.__typename === 'Error') {
+            store.dispatch({
+              type: GET_ERRORS,
+              payload: [result.data.me],
+            });
+          }
+
+        if (result.data.me.__typename === 'me_data') {
+          // get current user || redirect to dashboard
+          store.dispatch(set_current_user(result.data.me));
+          // if (history) history.push('/dashboard');
+          // window.location.href = '/dashboard';
+        }
+      }
   };
   me();
-
-  if (result)
-    if (result.data) {
-      if (result.data.me)
-        if (result.data.me.__typename === 'Error') {
-          store.dispatch({
-            type: GET_ERRORS,
-            payload: [result.data.me],
-          });
-        }
-
-      if (result.data.me.__typename === 'me_data') {
-        // get current user || redirect to dashboard
-        store.dispatch(set_current_user(result.data.me));
-        // if (history) history.push('/dashboard');
-        window.location.push('/dashboard');
-      }
-    }
 };

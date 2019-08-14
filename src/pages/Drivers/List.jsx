@@ -1,7 +1,7 @@
 import Page from 'components/Page';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Card, CardBody, CardHeader, Col, Table, Row } from 'reactstrap';
 import TicketItem from '../../components/common/List/MovieItem';
 // import Spinner from '../../components/common/spinner';
