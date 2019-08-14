@@ -21,7 +21,7 @@ export const checksessionSetUser = () => {
       if (result.data.me.__typename === 'Error') {
         store.dispatch({
           type: GET_ERRORS,
-          payload: result.data.me,
+          payload: [result.data.me],
         });
       }
 
@@ -29,6 +29,7 @@ export const checksessionSetUser = () => {
       // get current user || redirect to dashboard
       store.dispatch(set_current_user(result.data.me));
       // if (history) history.push('/dashboard');
+      window.location.push('/dashboard');
     }
   }
 };

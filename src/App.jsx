@@ -39,7 +39,7 @@ import { Provider } from 'react-redux';
 import store from 'redux/store';
 
 // Check for token and set user
-// checksessionSetUser();
+checksessionSetUser();
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
