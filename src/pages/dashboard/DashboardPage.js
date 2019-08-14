@@ -1,32 +1,10 @@
 import Page from 'components/Page';
 import UserProgressTable from 'components/UserProgressTable';
-import { IconWidget, NumberWidget } from 'components/Widget';
-import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
-import { chartjs, userProgressTableData } from 'demos/dashboardPage';
+import { NumberWidget } from 'components/Widget';
+import { userProgressTableData } from 'demos/dashboardPage';
 import React from 'react';
-import { Bar, Line } from 'react-chartjs-2';
-import {
-  MdBubbleChart,
-  MdInsertChart,
-  MdPersonPin,
-  MdPieChart,
-  MdRateReview,
-  MdShare,
-  MdShowChart,
-  MdThumbUp,
-} from 'react-icons/md';
-import {
-  Badge,
-  Card,
-  CardBody,
-  CardGroup,
-  CardHeader,
-  CardTitle,
-  Col,
-  ListGroup,
-  ListGroupItem,
-  Row,
-} from 'reactstrap';
+import { MdPersonPin } from 'react-icons/md';
+import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import { getColor } from 'utils/colors';
 
 class DashboardPage extends React.Component {

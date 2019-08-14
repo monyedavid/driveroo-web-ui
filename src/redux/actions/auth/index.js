@@ -40,24 +40,25 @@ export const me = history => async dispatch => {
       type: 'NETWORK',
       payload: 'A network error occured please try again later',
     });
+    return;
   }
 
-  console.log(result);
-  if (result.data) {
-    if (result.data.me)
-      if (result.data.me.__typename === 'Error') {
-        dispatch({
-          type: GET_ERRORS,
-          payload: result.data.me,
-        });
+  if (result)
+    if (result.data) {
+      if (result.data.me)
+        if (result.data.me.__typename === 'Error') {
+          dispatch({
+            type: GET_ERRORS,
+            payload: result.data.me,
+          });
+        }
+
+      if (result.data.me.__typename === 'me_data') {
+        // get current user || redirect to dashboard
+        dispatch(set_current_user(result.data.me));
+        if (history) history.push('/dashboard');
       }
-
-    if (result.data.me.__typename === 'me_data') {
-      // get current user || redirect to dashboard
-      dispatch(set_current_user(result.data.me));
-      if (history) history.push('/dashboard');
     }
-  }
 };
 
 // Login - Get User Token
