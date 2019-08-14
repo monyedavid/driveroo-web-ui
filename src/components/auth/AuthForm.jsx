@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import logo200Image from 'assets/img/driveroo/03.png';
 import PropTypes from 'prop-types';
@@ -16,6 +16,8 @@ function AuthForm(props) {
     onLogoClick,
     firstNameLabel,
     lastNameLabel,
+    // registerUser,
+    // loginUser,
     // davids special
     //  registerationId,
     page,

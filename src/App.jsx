@@ -33,14 +33,14 @@ import RangeTransactions from 'pages/transaction/RangeTransactions';
 
 // PRIVATE ROUTER
 // import PrivateRoute from 'components/common/PrivateRoute';
-import { check_token_storage } from 'utils/auth/checkTokenStorage';
+import { checksessionSetUser } from 'utils/auth/checkTokenStorage';
 
 // REDUX
 import { Provider } from 'react-redux';
 import store from 'redux/store';
 
 // Check for token and set user
-check_token_storage();
+// checksessionSetUser();
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;

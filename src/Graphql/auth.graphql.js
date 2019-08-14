@@ -1,8 +1,9 @@
 import * as rp from 'request-promise';
+import config from './config';
 
 export class GSAuth {
   constructor(url, session) {
-    this.url = url ? url : process.env.DRIVER_MS;
+    this.url = url ? url : config.ams;
     this.options = {
       withCredentials: true,
       json: true,
