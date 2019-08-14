@@ -20,7 +20,7 @@ function AuthForm(props) {
     firstNameLabel,
     lastNameLabel,
     registerUser,
-    // loginUser,
+    loginUser,
     // davids special
     registerationId,
     page,
@@ -46,6 +46,7 @@ function AuthForm(props) {
   const handleSubmit = event => {
     event.preventDefault();
     if (page === 'login') {
+      loginUser({ username, password });
       console.log('Doing login avctivty', username, password);
     }
 
@@ -210,10 +211,10 @@ AuthForm.propTypes = {
 AuthForm.defaultProps = {
   authState: 'LOGIN',
   showLogo: true,
-  usernameLabel: 'Email',
+  usernameLabel: 'Email or Phone Number',
   usernameInputProps: {
     type: 'email',
-    placeholder: 'your@email.com',
+    placeholder: 'your@email.com or +X 000',
   },
   passwordLabel: 'Password',
   firstNameLabel: 'First Name',

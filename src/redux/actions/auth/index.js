@@ -3,9 +3,13 @@ import { GSAuth } from '../../../Graphql/auth.graphql';
 // Register User
 const service = new GSAuth();
 export const loginUser = ({ emailmobile, password }) => async dispatch => {
+  let result;
   try {
-    await service.login({ emailmobile, password });
-  } catch (error) {}
+    result = await service.login({ emailmobile, password });
+  } catch (error) {
+    console.log(error, '| error');
+  }
+  console.log(result, 'result');
 };
 
 // Login - Get User Token
