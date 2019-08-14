@@ -1,49 +1,46 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Button } from 'reactstrap';
 // import classnames from 'classnames';
 // import PropTypes from 'prop-types';
 
-export default class TicketItem extends Component {
-  render() {
-    const {
-        ticketDetails: {
-          _id,
-          name,
-          available,
-          purchaseCount,
-          filmhouse_id,
-          duration,
-          genre,
-        },
-        history,
-      } = this.props,
-      addShowtimeLink = `/add-showtime/${_id}`;
-    return (
-      <React.Fragment>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>{name}</td>
-            <td>{available}</td>
-            <td>{purchaseCount}</td>
-            <td>{filmhouse_id}</td>
-            <td>{duration}</td>
-            <td>{genre}</td>
-            <td>
-              <Button
-                color="secondary"
-                onClick={() => {
-                  console.log('view Primary secondary Addresse');
-                }}
-                size="lg"
-                active
-              >
-                VIEW PTSD ADDRESS
-              </Button>
-            </td>
-          </tr>
-        </tbody>
-      </React.Fragment>
-    );
-  }
+export default function TicketItem({ dd, history, i }) {
+  return (
+    <React.Fragment>
+      <tbody>
+        <tr>
+          <th scope="row">{i}</th>
+          <td>{dd.avatar}</td>
+          <td>{`${dd.firstName} ${dd.lastName}`}</td>
+          <td>{dd.email}</td>
+          <td>{dd.mobile}</td>
+          <td>{dd.driver_rating ? dd.driver_rating : 'No rating yet'}</td>
+          <td>
+            {' '}
+            <Button
+              color="secondary"
+              onClick={() => {
+                console.log('view Primary secondary Addresse');
+              }}
+              size="lg"
+              active
+            >
+              VIEW LAST SEEN
+            </Button>
+          </td>
+          <td>
+            <Button
+              color="secondary"
+              onClick={() => {
+                console.log('view Primary secondary Addresse');
+              }}
+              size="lg"
+              active
+            >
+              VIEW PTSD ADDRESS
+            </Button>
+          </td>
+        </tr>
+      </tbody>
+    </React.Fragment>
+  );
 }

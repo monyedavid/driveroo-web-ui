@@ -15,24 +15,25 @@ class ListMovies extends Component {
 
   render() {
     const {
-      driver: { loading, driver },
+      driver: { loading, drivers },
     } = this.props;
 
     let list_driver_items;
 
-    loading === true && driver == null
+    loading === true && drivers == null
       ? (list_driver_items = <React.Fragment />)
-      : loading === false && driver == null
+      : loading === false && drivers == null
       ? (list_driver_items = <React.Fragment />)
-      : driver.AllTickets.length > 0
-      ? (list_driver_items = driver.AllTickets.map(driver => (
+      : drivers.length > 0
+      ? (list_driver_items = drivers.map((driver, i) => (
           <DriverItem
+            index={i}
             key={driver._id}
-            ticketDetails={driver}
+            dd={driver}
             history={this.props.history}
           />
         )))
-      : (list_driver_items = <h4>No Movie Tickets Where Found!</h4>);
+      : (list_driver_items = <h4>No Drivers where found!</h4>);
 
     return (
       <Page title="Drivers" breadcrumbs={[{ name: 'Drivers', active: true }]}>
